@@ -1,0 +1,21 @@
+
+exclude *.json
+exclude *.sh
+exclude *.txt
+exclude *.xml
+
+prune   bin
+prune   coverage
+
+exclude personal.txt
+exclude pyvenv.cfg
+
+exclude build.py
+exclude examples.py
+
+exclude ggps/xxx.py
+
+include README.rst
+include LICENSE
+
+recursive-include tests *.py
