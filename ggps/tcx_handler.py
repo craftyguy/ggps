@@ -6,9 +6,7 @@ import xml.sax
 from collections import defaultdict
 
 
-# python ggps/path_parser.py > data/kml_paths.json
-
-class PathHandler(xml.sax.ContentHandler):
+class TcxHandler(xml.sax.ContentHandler):
 
     def __init__(self):
         xml.sax.ContentHandler.__init__(self)
@@ -43,6 +41,6 @@ def main(sourceFileName):
     xml.sax.parse(source, PathHandler())
 
 if __name__ == "__main__":
-    filename = "data/activity_930994230.tcx"
-    filename = "data/activity_893959925.tcx"
+    filename = "data/activity_930994230.kml"
+    filename = "data/activity_893959925.kml"
     main(filename)
