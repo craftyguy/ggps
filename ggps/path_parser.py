@@ -1,12 +1,11 @@
 __author__ = 'cjoakim'
 
 import json
+import sys
 import xml.sax
 
 from collections import defaultdict
 
-
-# python ggps/path_parser.py > data/kml_paths.json
 
 class PathHandler(xml.sax.ContentHandler):
 
@@ -42,7 +41,9 @@ def main(sourceFileName):
     source = open(sourceFileName)
     xml.sax.parse(source, PathHandler())
 
+
+# python ggps/path_parser.py data/twin_cities_marathon.gpx > data/paths/twin_cities_marathon_gpx.json
+
 if __name__ == "__main__":
-    filename = "data/activity_930994230.tcx"
-    filename = "data/activity_893959925.tcx"
+    filename = sys.argv[1]
     main(filename)

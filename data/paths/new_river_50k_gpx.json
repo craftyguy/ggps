@@ -1,0 +1,23 @@
+{
+  "gpx": 1,
+  "gpx@creator": 1,
+  "gpx@version": 1,
+  "gpx@xmlns": 1,
+  "gpx@xmlns:gpxtpx": 1,
+  "gpx@xmlns:gpxx": 1,
+  "gpx@xmlns:xsi": 1,
+  "gpx@xsi:schemaLocation": 1,
+  "gpx|metadata": 1,
+  "gpx|metadata|link": 1,
+  "gpx|metadata|link@href": 1,
+  "gpx|metadata|link|text": 1,
+  "gpx|metadata|time": 1,
+  "gpx|trk": 1,
+  "gpx|trk|name": 1,
+  "gpx|trk|trkseg": 1,
+  "gpx|trk|trkseg|trkpt": 2636,
+  "gpx|trk|trkseg|trkpt@lat": 2636,
+  "gpx|trk|trkseg|trkpt@lon": 2636,
+  "gpx|trk|trkseg|trkpt|ele": 2636,
+  "gpx|trk|trkseg|trkpt|time": 2636
+}
