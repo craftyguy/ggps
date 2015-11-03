@@ -1,12 +1,19 @@
 __author__ = 'cjoakim'
 
 import json
+import sys
 import xml.sax
 
 from collections import defaultdict
 
 
 class TcxHandler(xml.sax.ContentHandler):
+
+    @classmethod
+    def parse(cls, filename):
+        handler = TcxHandler()
+        none_result =  xml.sax.parse(open(filename), handler)
+        return handler
 
     def __init__(self):
         xml.sax.ContentHandler.__init__(self)
@@ -36,11 +43,7 @@ class TcxHandler(xml.sax.ContentHandler):
         return '|'.join(self.heirarchy)
 
 
-def main(sourceFileName):
-    source = open(sourceFileName)
-    xml.sax.parse(source, PathHandler())
-
 if __name__ == "__main__":
-    filename = "data/activity_930994230.kml"
-    filename = "data/activity_893959925.kml"
-    main(filename)
+    filename = sys.argv[1]
+    result = TcxHandler.parse(filename)
+    print(result)
