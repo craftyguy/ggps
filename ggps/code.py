@@ -51,7 +51,7 @@ class CodeGenerator(object):
             if self.tkpt_path in path:
                 print(path)
 
-# python ggps/code_gen.py data/paths/twin_cities_marathon_gpx.json
+# python ggps/code.py data/paths/twin_cities_marathon_gpx.json
 
 if __name__ == "__main__":
     filename = sys.argv[1]

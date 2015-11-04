@@ -10,7 +10,7 @@ from collections import defaultdict
 class TcxHandler(xml.sax.ContentHandler):
 
     @classmethod
-    def parse(cls, filename):
+    def parse_trackpoints (cls, filename):
         handler = TcxHandler()
         none_result =  xml.sax.parse(open(filename), handler)
         return handler
@@ -19,6 +19,7 @@ class TcxHandler(xml.sax.ContentHandler):
         xml.sax.ContentHandler.__init__(self)
         self.heirarchy = list()
         self.path_counter = defaultdict(int)
+        self.trackpoints = list()
 
     def startElement(self, name, attrs):
         self.heirarchy.append(name)
@@ -38,6 +39,9 @@ class TcxHandler(xml.sax.ContentHandler):
     def characters(self, content):
         pass
         #self.current_value.append(content)
+
+    def current_depth(self):
+        return len(self.heirarchy)
 
     def current_path(self):
         return '|'.join(self.heirarchy)
