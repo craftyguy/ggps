@@ -5,21 +5,13 @@
 
 source bin/activate
 
-echo 'upgrading pip and libraries used by this project...'
+pip3 install --upgrade pip
+pip3 install --upgrade pip-tools
 
-pip install --upgrade pip
+pip-compile requirements.in
+pip3 install -r requirements.txt
+pip-sync
 
-pip3 --version
-python3 --version
-
-pip install --upgrade m26
-pip install --upgrade arrow
-pip install --upgrade check-manifest
-pip install --upgrade coverage
-pip install --upgrade flake8
-pip install --upgrade nose
-
-pip list   > pip_list.txt
-pip freeze > requirements.txt
+pip3 list > pip_list.txt
 
 echo 'done'
