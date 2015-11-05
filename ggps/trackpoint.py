@@ -2,7 +2,7 @@
 
 class Trackpoint(object):
 
-    def __init__(self, filename):
+    def __init__(self):
         self.values = dict()
 
     def set(self, key, value):
