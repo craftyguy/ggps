@@ -7,6 +7,9 @@ class Trackpoint(object):
         self.values = dict()
         self.values['type'] = 'Trackpoint'
 
+    def get(self, key):
+        return self.values[key]
+
     def set(self, key, value):
         if key:
             self.values[key.lower().strip()] = value.strip()

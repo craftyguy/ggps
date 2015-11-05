@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Shell script to install or upgrade python packages for this pyvenv.
-# Chris Joakim, 2015/11/01
+# Chris Joakim, 2015/11/05
 
 source bin/activate
 
@@ -12,6 +12,7 @@ pip install --upgrade pip
 pip3 --version
 python3 --version
 
+pip install --upgrade m26
 pip install --upgrade arrow
 pip install --upgrade check-manifest
 pip install --upgrade coverage
