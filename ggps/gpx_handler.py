@@ -69,8 +69,8 @@ class GpxHandler(BaseHandler):
         self.calculate_elapsed_time(t)
 
 
-if __name__ == "__main__":
-    filename = sys.argv[1]
-    handler = GpxHandler.parse(filename, True)
-    for t in handler.trackpoints:
-        print(repr(t))
+# if __name__ == "__main__":
+#     filename = sys.argv[1]
+#     handler = GpxHandler.parse(filename, True)
+#     for t in handler.trackpoints:
+#         print(repr(t))

@@ -38,10 +38,3 @@ class PathHandler(BaseHandler):
     def __str__(self):
         return json.dumps(self.path_counter, sort_keys=True, indent=2)
 
-# python ggps/path_parser.py data/twin_cities_marathon.gpx
-
-if __name__ == "__main__":
-    filename = sys.argv[1]
-    handler = PathHandler.parse(filename)
-    print(handler)
-    print(handler.completed)

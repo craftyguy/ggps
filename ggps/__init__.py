@@ -203,11 +203,11 @@ class GpxHandler(BaseHandler):
         self.calculate_elapsed_time(t)
 
 
-if __name__ == "__main__":
-    filename = sys.argv[1]
-    handler = GpxHandler.parse(filename, True)
-    for t in handler.trackpoints:
-        print(repr(t))
+# if __name__ == "__main__":
+#     filename = sys.argv[1]
+#     handler = GpxHandler.parse(filename, True)
+#     for t in handler.trackpoints:
+#         print(repr(t))
 
 
 class TcxHandler(BaseHandler):
@@ -277,11 +277,11 @@ class TcxHandler(BaseHandler):
 
 # python ggps/tcx_handler.py data/twin_cities_marathon.tcx
 
-if __name__ == "__main__":
-    filename = sys.argv[1]
-    handler = TcxHandler.parse(filename, True)
-    for t in handler.trackpoints:
-        print(repr(t))
+# if __name__ == "__main__":
+#     filename = sys.argv[1]
+#     handler = TcxHandler.parse(filename, True)
+#     for t in handler.trackpoints:
+#         print(repr(t))
 
 
 class PathHandler(BaseHandler):
@@ -315,11 +315,11 @@ class PathHandler(BaseHandler):
 
 # python ggps/path_parser.py data/twin_cities_marathon.gpx
 
-if __name__ == "__main__":
-    filename = sys.argv[1]
-    handler = PathHandler.parse(filename)
-    print(handler)
-    print(handler.completed)
+# if __name__ == "__main__":
+#     filename = sys.argv[1]
+#     handler = PathHandler.parse(filename)
+#     print(handler)
+#     print(handler.completed)
 
 
-# built on 2015-11-07 06:03:42.422021
+# built on 2015-11-07 06:43:39.040148

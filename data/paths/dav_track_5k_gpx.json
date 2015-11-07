@@ -15,9 +15,9 @@
   "gpx|trk": 1,
   "gpx|trk|name": 1,
   "gpx|trk|trkseg": 1,
-  "gpx|trk|trkseg|trkpt": 2636,
-  "gpx|trk|trkseg|trkpt@lat": 2636,
-  "gpx|trk|trkseg|trkpt@lon": 2636,
-  "gpx|trk|trkseg|trkpt|ele": 2636,
-  "gpx|trk|trkseg|trkpt|time": 2636
+  "gpx|trk|trkseg|trkpt": 245,
+  "gpx|trk|trkseg|trkpt@lat": 245,
+  "gpx|trk|trkseg|trkpt@lon": 245,
+  "gpx|trk|trkseg|trkpt|ele": 245,
+  "gpx|trk|trkseg|trkpt|time": 245
 }

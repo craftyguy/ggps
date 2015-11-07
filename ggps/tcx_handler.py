@@ -73,8 +73,8 @@ class TcxHandler(BaseHandler):
 
 # python ggps/tcx_handler.py data/twin_cities_marathon.tcx
 
-if __name__ == "__main__":
-    filename = sys.argv[1]
-    handler = TcxHandler.parse(filename, True)
-    for t in handler.trackpoints:
-        print(repr(t))
+# if __name__ == "__main__":
+#     filename = sys.argv[1]
+#     handler = TcxHandler.parse(filename, True)
+#     for t in handler.trackpoints:
+#         print(repr(t))
