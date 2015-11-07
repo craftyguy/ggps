@@ -77,7 +77,11 @@ class Builder(object):
 
     def code_files(self):
         files = list()
-        files.append('ggps/xxx.py')
+        files.append('ggps/sax.py')
+        files.append('ggps/trackpoint.py')
+        files.append('ggps/gpx_handler.py')
+        files.append('ggps/tcx_handler.py')
+        files.append('ggps/path_parser.py')
         return files
 
 
