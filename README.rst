@@ -77,7 +77,8 @@ Includes sample data files.
 Changelog
 =========
 
-Version 0.1.1
+Version 0.1.2
 -------------
 
+-  2015/11/07. Version 0.1.2, with Sphinx-based documentation.
 -  2015/11/07. Version 0.1.1.

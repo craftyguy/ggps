@@ -15,7 +15,7 @@ setup(
     name='ggps',
 
     # Versions should comply with PEP440.
-    version='0.1.1',
+    version='0.1.2',
 
     description='ggps is a python library for speed and pace calculations for sports like running and cycling',
     long_description=long_description,
