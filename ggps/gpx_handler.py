@@ -11,13 +11,13 @@ class GpxHandler(BaseHandler):
     tkpt_path_len = len(tkpt_path)
 
     @classmethod
-    def parse(cls, filename, augment=False):
-        handler = GpxHandler(augment)
+    def parse(cls, filename):
+        handler = GpxHandler()
         xml.sax.parse(open(filename), handler)
         return handler
 
-    def __init__(self, augment=False):
-        BaseHandler.__init__(self, augment)
+    def __init__(self):
+        BaseHandler.__init__(self)
 
     def startElement(self, tag_name, attrs):
         self.heirarchy.append(tag_name)
@@ -57,12 +57,9 @@ class GpxHandler(BaseHandler):
 
     def endDocument(self):
         self.end_reached = True
-        if self.augment:
-            for idx, t in enumerate(self.trackpoints):
-                if idx == 0:
-                    self.set_first_trackpoint(t)
-                self.augment_with_calculations(idx, t)
+        for idx, t in enumerate(self.trackpoints):
+            if idx == 0:
+                self.set_first_trackpoint(t)
 
-    def augment_with_calculations(self, idx, t):
-        t.set('seq', "{0}".format(idx + 1))
-        self.calculate_elapsed_time(t)
+            t.set('seq', "{0}".format(idx + 1))
+            self.calculate_elapsed_time(t)

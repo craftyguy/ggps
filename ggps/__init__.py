@@ -1,5 +1,5 @@
 __author__ = 'cjoakim'
-__version__ = '0.0.1'
+__version__ = '0.0.5'
 
 """
 ggps library
@@ -37,9 +37,8 @@ class Trackpoint(object):
 
 class BaseHandler(xml.sax.ContentHandler):
 
-    def __init__(self, augment=False):
+    def __init__(self):
         xml.sax.ContentHandler.__init__(self)
-        self.augment = augment
         self.heirarchy = list()
         self.trackpoints = list()
         self.curr_tkpt = Trackpoint()
@@ -75,7 +74,8 @@ class BaseHandler(xml.sax.ContentHandler):
         self.first_hhmmss = self.parse_hhmmss(self.first_time)
         self.first_etime = m26.ElapsedTime(self.first_hhmmss)
         self.first_time_secs = self.first_etime.secs
-        # deal with the possibility that an Activity spans two calendar days.
+
+        # deal with the possibility that the Activity spans two calendar days.
         secs = int(m26.Constants.seconds_per_hour() * 24)
         self.first_time_secs_to_midnight = secs - self.first_time_secs
         if False:
@@ -83,8 +83,8 @@ class BaseHandler(xml.sax.ContentHandler):
             print("first_hhmmss: {0}".format(self.first_hhmmss))
             print("first_etime:  {0}".format(self.first_etime))
             print("first_time_secs: {0}".format(self.first_time_secs))
-            print("first_time_secs_to_midnight: {0}".format(
-                self.first_time_secs_to_midnight))
+            print("first_time_secs_to_midnight: {0} {1}".format(
+                self.first_time_secs_to_midnight, secs))
 
     def meters_to_feet(self, t, meters_key, new_key):
         m = t.get(meters_key)
@@ -114,8 +114,8 @@ class BaseHandler(xml.sax.ContentHandler):
             t.set('runcadencex2', str(i * 2))
 
     def calculate_elapsed_time(self, t):
-        new_key = 'elapsedtime'
         time_str = t.get('time')
+        new_key = 'elapsedtime'
         if time_str:
             if time_str == self.first_time:
                 t.set(new_key, '00:00:00')
@@ -133,8 +133,8 @@ class BaseHandler(xml.sax.ContentHandler):
         For a given datetime value like '2014-10-05T17:22:17.000Z' return the
         hhmmss value '17:22:17'.
         """
-        if len(time_str) == 24:
-            return time_str.split('T')[1][:8]
+        if len(time_str) > 0:
+            return str(time_str.split('T')[1][:8])
         else:
             return ''
 
@@ -145,13 +145,13 @@ class GpxHandler(BaseHandler):
     tkpt_path_len = len(tkpt_path)
 
     @classmethod
-    def parse(cls, filename, augment=False):
-        handler = GpxHandler(augment)
+    def parse(cls, filename):
+        handler = GpxHandler()
         xml.sax.parse(open(filename), handler)
         return handler
 
-    def __init__(self, augment=False):
-        BaseHandler.__init__(self, augment)
+    def __init__(self):
+        BaseHandler.__init__(self)
 
     def startElement(self, tag_name, attrs):
         self.heirarchy.append(tag_name)
@@ -191,15 +191,12 @@ class GpxHandler(BaseHandler):
 
     def endDocument(self):
         self.end_reached = True
-        if self.augment:
-            for idx, t in enumerate(self.trackpoints):
-                if idx == 0:
-                    self.set_first_trackpoint(t)
-                self.augment_with_calculations(idx, t)
+        for idx, t in enumerate(self.trackpoints):
+            if idx == 0:
+                self.set_first_trackpoint(t)
 
-    def augment_with_calculations(self, idx, t):
-        t.set('seq', "{0}".format(idx + 1))
-        self.calculate_elapsed_time(t)
+            t.set('seq', "{0}".format(idx + 1))
+            self.calculate_elapsed_time(t)
 
 
 class TcxHandler(BaseHandler):
@@ -209,13 +206,13 @@ class TcxHandler(BaseHandler):
     tkpt_path_len = len(tkpt_path)
 
     @classmethod
-    def parse(cls, filename, augment=False):
-        handler = TcxHandler(augment)
+    def parse(cls, filename):
+        handler = TcxHandler()
         xml.sax.parse(open(filename), handler)
         return handler
 
-    def __init__(self, augment=False):
-        BaseHandler.__init__(self, augment)
+    def __init__(self):
+        BaseHandler.__init__(self)
 
     def startElement(self, tag_name, attrs):
         self.heirarchy.append(tag_name)
@@ -252,19 +249,16 @@ class TcxHandler(BaseHandler):
 
     def endDocument(self):
         self.end_reached = True
-        if self.augment:
-            for idx, t in enumerate(self.trackpoints):
-                if idx == 0:
-                    self.set_first_trackpoint(t)
-                self.augment_with_calculations(idx, t)
+        for idx, t in enumerate(self.trackpoints):
+            if idx == 0:
+                self.set_first_trackpoint(t)
 
-    def augment_with_calculations(self, idx, t):
-        t.set('seq', "{0}".format(idx + 1))
-        self.meters_to_feet(t, 'altitudemeters', 'altitudefeet')
-        self.meters_to_miles(t, 'distancemeters', 'distancemiles')
-        self.meters_to_km(t, 'distancemeters', 'distancekilometers')
-        self.runcadence_x2(t)
-        self.calculate_elapsed_time(t)
+            t.set('seq', "{0}".format(idx + 1))
+            self.meters_to_feet(t, 'altitudemeters', 'altitudefeet')
+            self.meters_to_miles(t, 'distancemeters', 'distancemiles')
+            self.meters_to_km(t, 'distancemeters', 'distancekilometers')
+            self.runcadence_x2(t)
+            self.calculate_elapsed_time(t)
 
 
 class PathHandler(BaseHandler):
@@ -297,4 +291,4 @@ class PathHandler(BaseHandler):
         return json.dumps(self.path_counter, sort_keys=True, indent=2)
 
 
-# built on 2015-11-07 08:03:48.871418
+# built on 2015-11-07 09:25:30.214834

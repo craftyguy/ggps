@@ -36,9 +36,9 @@ if __name__ == "__main__":
             infile = "data/{0}.{1}".format(base_name, file_type)
             outfile = "data/parsed/{0}_{1}.json".format(base_name, file_type)
             if file_type == 'gpx':
-                handler = ggps.GpxHandler.parse(infile, True)
+                handler = ggps.GpxHandler.parse(infile)
             else:
-                handler = ggps.TcxHandler.parse(infile, True)
+                handler = ggps.TcxHandler.parse(infile)
             json_obj = as_json_serializable(handler.trackpoints)
             with open(outfile, 'wt') as f:
                 json_str = json.dumps(json_obj, sort_keys=True, indent=2)

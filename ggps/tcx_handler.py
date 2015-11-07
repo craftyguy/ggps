@@ -12,13 +12,13 @@ class TcxHandler(BaseHandler):
     tkpt_path_len = len(tkpt_path)
 
     @classmethod
-    def parse(cls, filename, augment=False):
-        handler = TcxHandler(augment)
+    def parse(cls, filename):
+        handler = TcxHandler()
         xml.sax.parse(open(filename), handler)
         return handler
 
-    def __init__(self, augment=False):
-        BaseHandler.__init__(self, augment)
+    def __init__(self):
+        BaseHandler.__init__(self)
 
     def startElement(self, tag_name, attrs):
         self.heirarchy.append(tag_name)
@@ -55,16 +55,13 @@ class TcxHandler(BaseHandler):
 
     def endDocument(self):
         self.end_reached = True
-        if self.augment:
-            for idx, t in enumerate(self.trackpoints):
-                if idx == 0:
-                    self.set_first_trackpoint(t)
-                self.augment_with_calculations(idx, t)
+        for idx, t in enumerate(self.trackpoints):
+            if idx == 0:
+                self.set_first_trackpoint(t)
 
-    def augment_with_calculations(self, idx, t):
-        t.set('seq', "{0}".format(idx + 1))
-        self.meters_to_feet(t, 'altitudemeters', 'altitudefeet')
-        self.meters_to_miles(t, 'distancemeters', 'distancemiles')
-        self.meters_to_km(t, 'distancemeters', 'distancekilometers')
-        self.runcadence_x2(t)
-        self.calculate_elapsed_time(t)
+            t.set('seq', "{0}".format(idx + 1))
+            self.meters_to_feet(t, 'altitudemeters', 'altitudefeet')
+            self.meters_to_miles(t, 'distancemeters', 'distancemiles')
+            self.meters_to_km(t, 'distancemeters', 'distancekilometers')
+            self.runcadence_x2(t)
+            self.calculate_elapsed_time(t)

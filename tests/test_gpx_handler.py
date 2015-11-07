@@ -47,7 +47,8 @@ class GpxHandlerTest(unittest.TestCase):
 
     def test_twin_cities_marathon_gpx_file(self):
         filename = 'data/twin_cities_marathon.gpx'
-        handler = ggps.GpxHandler.parse(filename, True)
+        handler = ggps.GpxHandler.parse(filename)
+
         tkpts = handler.trackpoints
         expected_attr_count = 7
 
@@ -63,7 +64,7 @@ class GpxHandlerTest(unittest.TestCase):
         self.assertTrue(len(actual_tkpt.values) == expected_attr_count)
         for key in expected_tkpt.keys():
             expected, actual = expected_tkpt[key], actual_tkpt.values[key]
-            self.assertTrue(expected == actual, "first tkpt, key {0} ".format(key))
+            self.assertTrue(expected == actual, "first tkpt, key {0}".format(key))
 
         # check a trackpoint at ~mile 20
         expected_tkpt = self.expected_middle_trackpoint()
@@ -71,7 +72,7 @@ class GpxHandlerTest(unittest.TestCase):
         self.assertTrue(len(actual_tkpt.values) == expected_attr_count)
         for key in expected_tkpt.keys():
             expected, actual = expected_tkpt[key], actual_tkpt.values[key]
-            self.assertTrue(expected == actual, "20m tkpt, key {0} ".format(key))
+            self.assertTrue(expected == actual, "20m tkpt, key {0}".format(key))
 
         # check the last trackpoint
         expected_tkpt = self.expected_last_trackpoint()
@@ -79,4 +80,9 @@ class GpxHandlerTest(unittest.TestCase):
         self.assertTrue(len(actual_tkpt.values) == expected_attr_count)
         for key in expected_tkpt.keys():
             expected, actual = expected_tkpt[key], actual_tkpt.values[key]
-            self.assertTrue(expected == actual, "last tkpt, key {0} ".format(key))
+            self.assertTrue(expected == actual, "last tkpt, key {0}".format(key))
+
+        # check seconds_to_midnight
+        secs = int(handler.first_time_secs_to_midnight)
+        self.assertTrue(secs > 0, "first_time_secs_to_midnight is too small")
+        self.assertTrue(secs < 86400, "first_time_secs_to_midnight is too large")
