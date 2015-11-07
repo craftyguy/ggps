@@ -8,13 +8,14 @@ from ggps.trackpoint import Trackpoint
 
 class TcxHandler(BaseHandler):
 
-    tkpt_path = "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint"
+    root_tag = 'TrainingCenterDatabase'
+    tkpt_path = root_tag + "|Activities|Activity|Lap|Track|Trackpoint"
     tkpt_path_len = len(tkpt_path)
 
     @classmethod
     def parse(cls, filename, augment=False):
         handler = TcxHandler(augment)
-        none_result =  xml.sax.parse(open(filename), handler)
+        xml.sax.parse(open(filename), handler)
         return handler
 
     def __init__(self, augment=False):
@@ -23,7 +24,7 @@ class TcxHandler(BaseHandler):
     def startElement(self, tag_name, attrs):
         self.heirarchy.append(tag_name)
         self.reset_curr_text()
-        path = self.current_path()
+        path = self.curr_path()
 
         if path == self.tkpt_path:
             self.curr_tkpt = Trackpoint()
@@ -31,22 +32,7 @@ class TcxHandler(BaseHandler):
             return
 
     def endElement(self, tag_name):
-        path = self.current_path()
-
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|AltitudeMeters": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|DistanceMeters": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|Extensions": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|Extensions|TPX": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|Extensions|TPX@xmlns": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|Extensions|TPX|RunCadence": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|Extensions|TPX|Speed": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|HeartRateBpm": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|HeartRateBpm|Value": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|Position": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|Position|LatitudeDegrees": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|Position|LongitudeDegrees": 
-        # "TrainingCenterDatabase|Activities|Activity|Lap|Track|Trackpoint|Time": 
+        path = self.curr_path()
 
         if self.tkpt_path in path:
             if len(path) > self.tkpt_path_len:
@@ -63,7 +49,7 @@ class TcxHandler(BaseHandler):
                     tag_name = 'HeartRateBpm'
 
                 if retain:
-                    self.curr_tkpt.set(tag_name, self.current_text)
+                    self.curr_tkpt.set(tag_name, self.curr_text)
 
         self.heirarchy.pop()
         self.reset_curr_text()

@@ -2,7 +2,7 @@
 import sys
 import xml.sax
 
-from ggps.base_handler import BaseHandler
+from ggps.sax import BaseHandler
 from ggps.trackpoint import Trackpoint
 
 
@@ -14,7 +14,7 @@ class GpxHandler(BaseHandler):
     @classmethod
     def parse(cls, filename, augment=False):
         handler = GpxHandler(augment)
-        none_result =  xml.sax.parse(open(filename), handler)
+        xml.sax.parse(open(filename), handler)
         return handler
 
     def __init__(self, augment=False):
@@ -23,7 +23,7 @@ class GpxHandler(BaseHandler):
     def startElement(self, tag_name, attrs):
         self.heirarchy.append(tag_name)
         self.reset_curr_text()
-        path = self.current_path()
+        path = self.curr_path()
 
         if path == self.tkpt_path:
             self.curr_tkpt = Trackpoint()
@@ -36,16 +36,7 @@ class GpxHandler(BaseHandler):
             return
 
     def endElement(self, tag_name):
-        path = self.current_path()
-
-        # "gpx|trk|trkseg|trkpt": 2256,
-        # "gpx|trk|trkseg|trkpt@lat": 2256,
-        # "gpx|trk|trkseg|trkpt@lon": 2256,
-        # "gpx|trk|trkseg|trkpt|ele": 2256,
-        # "gpx|trk|trkseg|trkpt|extensions": 2256,
-        # "gpx|trk|trkseg|trkpt|extensions|gpxtpx:TrackPointExtension": 2256,
-        # "gpx|trk|trkseg|trkpt|extensions|gpxtpx:TrackPointExtension|gpxtpx:hr": 2256,
-        # "gpx|trk|trkseg|trkpt|time": 2256
+        path = self.curr_path()
 
         if self.tkpt_path in path:
             if len(path) > self.tkpt_path_len:
@@ -60,7 +51,7 @@ class GpxHandler(BaseHandler):
                     tag_name = 'heartratebpm'
 
                 if retain:
-                    self.curr_tkpt.set(tag_name, self.current_text)
+                    self.curr_tkpt.set(tag_name, self.curr_text)
 
         self.heirarchy.pop()
         self.reset_curr_text()

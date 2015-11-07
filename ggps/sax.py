@@ -15,7 +15,7 @@ class BaseHandler(xml.sax.ContentHandler):
         self.heirarchy = list()
         self.trackpoints = list()
         self.curr_tkpt = Trackpoint()
-        self.current_text = ''
+        self.curr_text = ''
         self.end_reached = False
         self.first_time = None
         self.first_etime = None
@@ -25,22 +25,18 @@ class BaseHandler(xml.sax.ContentHandler):
         self.completed = True
 
     def characters(self, chars):
-        print(chars)
         if self.curr_text:
             self.curr_text = self.curr_text + chars
         else:
             self.curr_text = chars
 
     def reset_curr_text(self):
-        self.current_text = ''
+        self.curr_text = ''
 
-    def characters(self, chars):
-        self.current_text = self.current_text + chars
-
-    def current_depth(self):
+    def curr_depth(self):
         return len(self.heirarchy)
 
-    def current_path(self):
+    def curr_path(self):
         return '|'.join(self.heirarchy)
 
     def trackpoint_count(self):
@@ -51,15 +47,16 @@ class BaseHandler(xml.sax.ContentHandler):
         self.first_hhmmss = self.parse_hhmmss(self.first_time)
         self.first_etime = m26.ElapsedTime(self.first_hhmmss)
         self.first_time_secs = self.first_etime.secs
-        # deal with the possibility that the Activity spans two days.
-        secs_at_midnight = int(m26.Constants.seconds_per_hour() * 24)
-        self.first_time_secs_to_midnight = secs_at_midnight - self.first_time_secs
+        # deal with the possibility that an Activity spans two calendar days.
+        secs = int(m26.Constants.seconds_per_hour() * 24)
+        self.first_time_secs_to_midnight = secs - self.first_time_secs
         if False:
             print("first_time:   {0}".format(self.first_time))
             print("first_hhmmss: {0}".format(self.first_hhmmss))
             print("first_etime:  {0}".format(self.first_etime))
             print("first_time_secs: {0}".format(self.first_time_secs))
-            print("first_time_secs_to_midnight: {0}".format(self.first_time_secs_to_midnight))
+            print("first_time_secs_to_midnight: {0}".format(
+                self.first_time_secs_to_midnight))
 
     def meters_to_feet(self, t, meters_key, new_key):
         m = t.get(meters_key)
@@ -74,13 +71,6 @@ class BaseHandler(xml.sax.ContentHandler):
         if m:
             km = float(m) / 1000.0
             t.set(new_key, str(km))
-
-    def meters_to_miles(self, t, meters_key, new_key):
-        m = t.get(meters_key)
-        if m:
-            km = float(m) / 1000.0
-            d_km = m26.Distance(km, m26.Constants.uom_kilometers())
-            t.set(new_key, str(d_km.as_miles()))
 
     def meters_to_miles(self, t, meters_key, new_key):
         m = t.get(meters_key)
@@ -112,7 +102,8 @@ class BaseHandler(xml.sax.ContentHandler):
 
     def parse_hhmmss(self, time_str):
         """
-        For a given value like '2014-10-05T17:22:17.000Z' return the hhmmss '17:22:17' part.
+        For a given datetime value like '2014-10-05T17:22:17.000Z' return the
+        hhmmss value '17:22:17'.
         """
         if len(time_str) == 24:
             return time_str.split('T')[1][:8]

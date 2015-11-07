@@ -29,7 +29,10 @@ class Builder(object):
             if len(self.from_imports) > 0:
                 f.write("\n")
             for key in sorted(self.from_imports):
-                f.write("%s\n" % key)
+                if 'ggps' in key:
+                    pass
+                else:
+                    f.write("%s\n" % key)
             for line in self.code_lines:
                 f.write("%s\n" % line)
             f.write("\n\n# built on {0}\n".format(datetime.datetime.now()))
@@ -77,8 +80,8 @@ class Builder(object):
 
     def code_files(self):
         files = list()
-        files.append('ggps/sax.py')
         files.append('ggps/trackpoint.py')
+        files.append('ggps/sax.py')
         files.append('ggps/gpx_handler.py')
         files.append('ggps/tcx_handler.py')
         files.append('ggps/path_parser.py')
@@ -86,6 +89,5 @@ class Builder(object):
 
 
 if __name__ == "__main__":
-
     builder = Builder()
     builder.build()

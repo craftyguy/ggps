@@ -1,6 +1,7 @@
 
 import json
 
+
 class Trackpoint(object):
 
     def __init__(self):
