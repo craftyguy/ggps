@@ -41,7 +41,7 @@ class Builder(object):
     def header_lines(self):
         lines = list()
         lines.append("__author__ = 'cjoakim'")
-        lines.append("__version__ = '0.1.2'")
+        lines.append("__version__ = '0.1.3'")
         lines.append("")
         lines.append('"""')
         lines.append("ggps library")

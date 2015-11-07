@@ -4,11 +4,9 @@ ggps - gps file utilities for garmin connect and garmin devices
 Features
 --------
 
-- Parse *.gpx and *.tcx files downloaded from Garmin Connect
-- The GPX parsed Trackpoint data includes additional/augmented values,
-  including as "seq" and "elapsedtime".
-- The TCX parsed Trackpoint data additionally includes additional/augmented values,
-  such as "altitudefeet", "distancemiles", "distancekilometers", and "runcadencex2".
+- Parse gpx and tcx files downloaded from Garmin Connect
+- The GPX parsed Trackpoint data includes additional/augmented values, including as "seq" and "elapsedtime".
+- The TCX parsed Trackpoint data additionally includes additional/augmented values, such as "altitudefeet", "distancemiles", "distancekilometers", and "runcadencex2".
 
 
 Quick start
@@ -77,8 +75,8 @@ Includes sample data files.
 Changelog
 =========
 
-Version 0.1.2
+Version 0.1.3
 -------------
 
--  2015/11/07. Version 0.1.2, with Sphinx-based documentation.
+-  2015/11/07. Version 0.1.3, README.rst
 -  2015/11/07. Version 0.1.1.
