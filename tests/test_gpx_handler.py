@@ -14,35 +14,35 @@ class GpxHandlerTest(unittest.TestCase):
 
     def expected_first_trackpoint(self):
         return {
-          "elapsedtime": "00:00:00",
-          "heartratebpm": "85",
-          "latitudedegrees": "44.97431952506304",
-          "longitudedegrees": "-93.26310088858008",
-          "seq": "1",
-          "time": "2014-10-05T13:07:53.000Z",
-          "type": "Trackpoint"
+            "elapsedtime": "00:00:00",
+            "heartratebpm": "85",
+            "latitudedegrees": "44.97431952506304",
+            "longitudedegrees": "-93.26310088858008",
+            "seq": "1",
+            "time": "2014-10-05T13:07:53.000Z",
+            "type": "Trackpoint"
         }
 
     def expected_middle_trackpoint(self):
         return {
-          "elapsedtime": "03:13:19",
-          "heartratebpm": "140",
-          "latitudedegrees": "44.959017438814044",
-          "longitudedegrees": "-93.21290854364634",
-          "seq": "1747",
-          "time": "2014-10-05T16:21:12.000Z",
-          "type": "Trackpoint"
+            "elapsedtime": "03:13:19",
+            "heartratebpm": "140",
+            "latitudedegrees": "44.959017438814044",
+            "longitudedegrees": "-93.21290854364634",
+            "seq": "1747",
+            "time": "2014-10-05T16:21:12.000Z",
+            "type": "Trackpoint"
         }
 
     def expected_last_trackpoint(self):
         return {
-          "elapsedtime": "04:14:24",
-          "heartratebpm": "161",
-          "latitudedegrees": "44.95180849917233",
-          "longitudedegrees": "-93.10493202880025",
-          "seq": "2256",
-          "time": "2014-10-05T17:22:17.000Z",
-          "type": "Trackpoint"
+            "elapsedtime": "04:14:24",
+            "heartratebpm": "161",
+            "latitudedegrees": "44.95180849917233",
+            "longitudedegrees": "-93.10493202880025",
+            "seq": "2256",
+            "time": "2014-10-05T17:22:17.000Z",
+            "type": "Trackpoint"
         }
 
     def test_twin_cities_marathon_gpx_file(self):
@@ -50,21 +50,29 @@ class GpxHandlerTest(unittest.TestCase):
         handler = ggps.GpxHandler.parse(filename, True)
         tkpts = handler.trackpoints
 
+        # check the number of trackpoints
         actual = len(tkpts)
         expected = 2256
         msg = "Should be {0} trackpoints, got {1}".format(expected, actual)
         self.assertTrue(actual == expected, msg)
 
+        # check the first trackpoint
+        expected_tkpt = self.expected_first_trackpoint()
+        actual_tkpt = handler.trackpoints[0]
+        for key in expected_tkpt.keys():
+            expected, actual = expected_tkpt[key], actual_tkpt.values[key]
+            self.assertTrue(expected == actual, "first tkpt, key {0} ".format(key))
 
-        self.assertTrue(tkpts[0] == self.expected_first_trackpoint())
+        # check a trackpoint at ~mile 20
+        expected_tkpt = self.expected_middle_trackpoint()
+        actual_tkpt = handler.trackpoints[1746]
+        for key in expected_tkpt.keys():
+            expected, actual = expected_tkpt[key], actual_tkpt.values[key]
+            self.assertTrue(expected == actual, "20m tkpt, key {0} ".format(key))
 
-
-
-    # def test_milliseconds_per_year(self):
-    #     self.assertTrue(m26.AgeCalculator.milliseconds_per_year() == 31557600000.0, "value should be 31557600000.0")
-    #
-    # def test_calculate(self):
-    #     a1 = m26.AgeCalculator.calculate('1960-10-01', '2015-10-01')
-    #     actual = 54.997946611909654
-    #     self.assertTrue(a1.value > (actual - 0.000001), "value is too small")
-    #     self.assertTrue(a1.value < (actual + 0.000001), "value is too large")
+        # check the last trackpoint
+        expected_tkpt = self.expected_last_trackpoint()
+        actual_tkpt = handler.trackpoints[-1]
+        for key in expected_tkpt.keys():
+            expected, actual = expected_tkpt[key], actual_tkpt.values[key]
+            self.assertTrue(expected == actual, "last tkpt, key {0} ".format(key))

@@ -9,7 +9,6 @@ VERSION = __version__
 
 import json
 import m26
-import sys
 import xml.sax
 
 from collections import defaultdict
@@ -203,13 +202,6 @@ class GpxHandler(BaseHandler):
         self.calculate_elapsed_time(t)
 
 
-# if __name__ == "__main__":
-#     filename = sys.argv[1]
-#     handler = GpxHandler.parse(filename, True)
-#     for t in handler.trackpoints:
-#         print(repr(t))
-
-
 class TcxHandler(BaseHandler):
 
     root_tag = 'TrainingCenterDatabase'
@@ -275,15 +267,6 @@ class TcxHandler(BaseHandler):
         self.calculate_elapsed_time(t)
 
 
-# python ggps/tcx_handler.py data/twin_cities_marathon.tcx
-
-# if __name__ == "__main__":
-#     filename = sys.argv[1]
-#     handler = TcxHandler.parse(filename, True)
-#     for t in handler.trackpoints:
-#         print(repr(t))
-
-
 class PathHandler(BaseHandler):
 
     @classmethod
@@ -313,13 +296,5 @@ class PathHandler(BaseHandler):
     def __str__(self):
         return json.dumps(self.path_counter, sort_keys=True, indent=2)
 
-# python ggps/path_parser.py data/twin_cities_marathon.gpx
 
-# if __name__ == "__main__":
-#     filename = sys.argv[1]
-#     handler = PathHandler.parse(filename)
-#     print(handler)
-#     print(handler.completed)
-
-
-# built on 2015-11-07 06:43:39.040148
+# built on 2015-11-07 07:53:24.181040

@@ -1,5 +1,4 @@
 
-import sys
 import xml.sax
 
 from ggps.sax import BaseHandler
@@ -69,12 +68,3 @@ class TcxHandler(BaseHandler):
         self.meters_to_km(t, 'distancemeters', 'distancekilometers')
         self.runcadence_x2(t)
         self.calculate_elapsed_time(t)
-
-
-# python ggps/tcx_handler.py data/twin_cities_marathon.tcx
-
-# if __name__ == "__main__":
-#     filename = sys.argv[1]
-#     handler = TcxHandler.parse(filename, True)
-#     for t in handler.trackpoints:
-#         print(repr(t))

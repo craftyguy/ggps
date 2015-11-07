@@ -1,4 +1,3 @@
-__author__ = 'cjoakim'
 
 import xml.sax
 

@@ -1,5 +1,4 @@
 
-import sys
 import xml.sax
 
 from ggps.sax import BaseHandler
@@ -67,10 +66,3 @@ class GpxHandler(BaseHandler):
     def augment_with_calculations(self, idx, t):
         t.set('seq', "{0}".format(idx + 1))
         self.calculate_elapsed_time(t)
-
-
-# if __name__ == "__main__":
-#     filename = sys.argv[1]
-#     handler = GpxHandler.parse(filename, True)
-#     for t in handler.trackpoints:
-#         print(repr(t))

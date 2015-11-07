@@ -1,7 +1,5 @@
-__author__ = 'cjoakim'
 
 import json
-import sys
 import xml.sax
 
 from collections import defaultdict
@@ -37,4 +35,3 @@ class PathHandler(BaseHandler):
 
     def __str__(self):
         return json.dumps(self.path_counter, sort_keys=True, indent=2)
-
