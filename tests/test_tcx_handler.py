@@ -4,7 +4,7 @@ import unittest
 import ggps
 
 
-class GpxHandlerTest(unittest.TestCase):
+class TcxHandlerTest(unittest.TestCase):
 
     def setUp(self):
         pass
@@ -14,42 +14,66 @@ class GpxHandlerTest(unittest.TestCase):
 
     def expected_first_trackpoint(self):
         return {
+            "altitudefeet": "850.3937408367167",
+            "altitudemeters": "259.20001220703125",
+            "distancekilometers": "0.0",
+            "distancemeters": "0.0",
+            "distancemiles": "0.0",
             "elapsedtime": "00:00:00",
             "heartratebpm": "85",
             "latitudedegrees": "44.97431952506304",
             "longitudedegrees": "-93.26310088858008",
+            "runcadence": "89",
+            "runcadencex2": "178",
             "seq": "1",
+            "speed": "0.0",
             "time": "2014-10-05T13:07:53.000Z",
             "type": "Trackpoint"
         }
 
     def expected_middle_trackpoint(self):
         return {
+            "altitudefeet": "805.7742982398804",
+            "altitudemeters": "245.60000610351562",
+            "distancekilometers": "32.187189453125",
+            "distancemeters": "32187.189453125",
+            "distancemiles": "20.00019228525722",
             "elapsedtime": "03:13:19",
             "heartratebpm": "140",
             "latitudedegrees": "44.959017438814044",
             "longitudedegrees": "-93.21290854364634",
+            "runcadence": "84",
+            "runcadencex2": "168",
             "seq": "1747",
+            "speed": "2.8269999027252193",
             "time": "2014-10-05T16:21:12.000Z",
             "type": "Trackpoint"
         }
 
     def expected_last_trackpoint(self):
         return {
+            "altitudefeet": "864.8294163501167",
+            "altitudemeters": "263.6000061035156",
+            "distancekilometers": "42.63544921875",
+            "distancemeters": "42635.44921875",
+            "distancemiles": "26.492439912628992",
             "elapsedtime": "04:14:24",
             "heartratebpm": "161",
             "latitudedegrees": "44.95180849917233",
             "longitudedegrees": "-93.10493202880025",
+            "runcadence": "77",
+            "runcadencex2": "154",
             "seq": "2256",
+            "speed": "3.5460000038146977",
             "time": "2014-10-05T17:22:17.000Z",
             "type": "Trackpoint"
         }
 
     def test_twin_cities_marathon_gpx_file(self):
-        filename = 'data/twin_cities_marathon.gpx'
-        handler = ggps.GpxHandler.parse(filename, True)
+        filename = 'data/twin_cities_marathon.tcx'
+        handler = ggps.TcxHandler.parse(filename, True)
         tkpts = handler.trackpoints
-        expected_attr_count = 7
+        expected_attr_count = 15
 
         # check the number of trackpoints
         actual = len(tkpts)
