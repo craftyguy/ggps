@@ -77,8 +77,7 @@ Includes sample data files.
 Changelog
 =========
 
-Version 0.0.5
+Version 0.1.1
 -------------
 
--  2015/11/07. Version 0.0.5, Alpha.
--  2015/11/01. Project created, in Alpha state.
+-  2015/11/07. Version 0.1.1.
