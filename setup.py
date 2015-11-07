@@ -15,7 +15,7 @@ setup(
     name='ggps',
 
     # Versions should comply with PEP440.
-    version='0.0.5',
+    version='0.1.1',
 
     description='ggps is a python library for speed and pace calculations for sports like running and cycling',
     long_description=long_description,
@@ -34,7 +34,7 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
 
         'Intended Audience :: Developers',
         'Topic :: Utilities',
@@ -46,7 +46,7 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
 
-    keywords='garmin gps parsing utilities',
+    keywords='garmin gps gpx tcx parsing utilities m26',
 
     # You can just specify the packages manually here if your project is simple.
     # Or you can use find_packages().
