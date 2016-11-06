@@ -1,7 +1,7 @@
 
 import xml.sax
 
-from ggps.sax import BaseHandler
+from ggps.base_handler import BaseHandler
 from ggps.trackpoint import Trackpoint
 
 

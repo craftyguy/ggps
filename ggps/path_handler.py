@@ -4,7 +4,7 @@ import xml.sax
 
 from collections import defaultdict
 
-from ggps.sax import BaseHandler
+from ggps.base_handler import BaseHandler
 
 
 class PathHandler(BaseHandler):

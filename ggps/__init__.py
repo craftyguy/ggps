@@ -8,7 +8,7 @@ ggps library
 """
 
 from .trackpoint import Trackpoint
-from .sax import BaseHandler
+from .base_handler import BaseHandler
 from .gpx_handler import GpxHandler
 from .tcx_handler import TcxHandler
-from .path_parser import PathHandler
+from .path_handler import PathHandler
