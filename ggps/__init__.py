@@ -1,5 +1,5 @@
 __author__ = 'cjoakim'
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 
 """
 ggps library
@@ -19,9 +19,6 @@ class Trackpoint(object):
     def __init__(self):
         self.values = dict()
         self.values['type'] = 'Trackpoint'
-
-    def hey(self, key):
-        return self.values[key]
 
     def get(self, key):
         return self.values[key]
@@ -294,4 +291,4 @@ class PathHandler(BaseHandler):
         return json.dumps(self.path_counter, sort_keys=True, indent=2)
 
 
-# built on 2016-11-06 08:11:00.971011
+# built on 2016-11-06 08:30:43.293003
