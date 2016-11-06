@@ -3,6 +3,7 @@ import unittest
 
 import ggps
 
+
 class TrackpointTest(unittest.TestCase):
 
     def setUp(self):
