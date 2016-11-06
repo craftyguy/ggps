@@ -15,9 +15,9 @@ setup(
     name='ggps',
 
     # Versions should comply with PEP440.
-    version='0.1.6',
+    version='0.1.7',
 
-    description='ggps is a python library for speed and pace calculations for sports like running and cycling',
+    description='ggps is a python library for parsing Garmin gpx and tcx files',
     long_description=long_description,
 
     url='https://github.com/cjoakim/ggps',
