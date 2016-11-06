@@ -20,9 +20,6 @@ class Trackpoint(object):
         self.values = dict()
         self.values['type'] = 'Trackpoint'
 
-    def hey(self, key):
-        return self.values[key]
-
     def get(self, key):
         return self.values[key]
 
@@ -144,7 +141,7 @@ class BaseHandler(xml.sax.ContentHandler):
 
 class GpxHandler(BaseHandler):
 
-    tkpt_path = "gpx|trk|trkseg|trkpt"  # ggps_src
+    tkpt_path = "gpx|trk|trkseg|trkpt"
     tkpt_path_len = len(tkpt_path)
 
     @classmethod
@@ -294,4 +291,4 @@ class PathHandler(BaseHandler):
         return json.dumps(self.path_counter, sort_keys=True, indent=2)
 
 
-# built on 2016-11-06 08:08:09.630234
+# built on 2016-11-06 08:03:01.375317

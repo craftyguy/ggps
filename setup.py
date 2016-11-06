@@ -20,7 +20,7 @@ setup(
     description='ggps is a python library for speed and pace calculations for sports like running and cycling',
     long_description=long_description,
 
-    url='https://github.com/cjoakim/ggps-py',
+    url='https://github.com/cjoakim/ggps',
 
     # Author details
     author='Christopher Joakim',

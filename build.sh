@@ -8,5 +8,12 @@ python build.py
 echo 'checking the merged source code with flake8...'
 flake8 ggps/__init__.py
 
-echo 'running all tests with nose and code coverage...'
-nosetests --with-coverage --cover-html --cover-html-dir=coverage --cover-package=ggps
+rm htmlcov/*.*
+
+echo 'executing unit tests...'
+python -m unittest -v
+
+echo 'creating code coverage report...'
+coverage html
+
+echo 'done'
