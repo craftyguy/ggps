@@ -61,4 +61,6 @@ setup(
         'dev':  ['check-manifest', 'flake8'],
         'test': ['coverage'],
     },
+
+    test_suite = 'tests',
 )

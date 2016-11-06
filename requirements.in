@@ -2,8 +2,10 @@
 # check-manifest
 
 arrow
+cov-core
 coverage
 flake8
 m26
+nose2
 Sphinx
 rstcheck
