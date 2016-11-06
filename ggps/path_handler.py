@@ -35,3 +35,10 @@ class PathHandler(BaseHandler):
 
     def __str__(self):
         return json.dumps(self.path_counter, sort_keys=True, indent=2)
+
+
+if __name__ == "__main__":  # pragma: no cover
+    import sys
+    import ggps
+    handler = ggps.PathHandler.parse(sys.argv[1])
+    print(handler)

@@ -59,24 +59,21 @@ class BaseHandler(xml.sax.ContentHandler):
 
     def meters_to_feet(self, t, meters_key, new_key):
         m = t.get(meters_key)
-        if m:
-            km = float(m) / 1000.0
-            d_km = m26.Distance(km, m26.Constants.uom_kilometers())
-            yds = d_km.as_yards()
-            t.set(new_key, str(yds * 3.000000))
+        km = float(m) / 1000.0
+        d_km = m26.Distance(km, m26.Constants.uom_kilometers())
+        yds = d_km.as_yards()
+        t.set(new_key, str(yds * 3.000000))
 
     def meters_to_km(self, t, meters_key, new_key):
         m = t.get(meters_key)
-        if m:
-            km = float(m) / 1000.0
-            t.set(new_key, str(km))
+        km = float(m) / 1000.0
+        t.set(new_key, str(km))
 
     def meters_to_miles(self, t, meters_key, new_key):
         m = t.get(meters_key)
-        if m:
-            km = float(m) / 1000.0
-            d_km = m26.Distance(km, m26.Constants.uom_kilometers())
-            t.set(new_key, str(d_km.as_miles()))
+        km = float(m) / 1000.0
+        d_km = m26.Distance(km, m26.Constants.uom_kilometers())
+        t.set(new_key, str(d_km.as_miles()))
 
     def runcadence_x2(self, t):
         c = t.get('runcadence')
@@ -105,6 +102,9 @@ class BaseHandler(xml.sax.ContentHandler):
         hhmmss value '17:22:17'.
         """
         if len(time_str) > 0:
-            return str(time_str.split('T')[1][:8])
+            if 'T' in time_str:
+                return str(time_str.split('T')[1][:8])
+            else:
+                return ''
         else:
             return ''

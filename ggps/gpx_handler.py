@@ -27,10 +27,8 @@ class GpxHandler(BaseHandler):
         if path == self.tkpt_path:
             self.curr_tkpt = Trackpoint()
             lat, lon = attrs['lat'],  attrs['lon']
-            if lat:
-                self.curr_tkpt.set('latitudedegrees', lat)
-            if lon:
-                self.curr_tkpt.set('longitudedegrees', lon)
+            self.curr_tkpt.set('latitudedegrees', lat)
+            self.curr_tkpt.set('longitudedegrees', lon)
             self.trackpoints.append(self.curr_tkpt)
             return
 

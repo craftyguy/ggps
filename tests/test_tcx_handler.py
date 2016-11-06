@@ -76,10 +76,15 @@ class TcxHandlerTest(unittest.TestCase):
         tkpts = handler.trackpoints
         expected_attr_count = 15
 
+        self.assertTrue(handler.curr_depth() == 0, 'curr_depth should be 0')
+        self.assertTrue(handler.curr_path() == '', 'curr_depth should be empty')
+
         # check the number of trackpoints
         actual = len(tkpts)
         expected = 2256
         msg = "Should be {0} trackpoints, got {1}".format(expected, actual)
+        self.assertTrue(actual == expected, msg)
+        actual = handler.trackpoint_count()
         self.assertTrue(actual == expected, msg)
 
         # check the first trackpoint

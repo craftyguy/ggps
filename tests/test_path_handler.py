@@ -39,3 +39,13 @@ class PathHandlerTest(unittest.TestCase):
         cnt = counter['gpx|metadata|time']
         msg = "count of 1 expected at 'gpx|metadata|time'"
         self.assertTrue(cnt == 1, msg)
+
+    def test_base_parse_hhmmss(self):
+        filename = 'data/twin_cities_marathon.gpx'
+        handler = ggps.PathHandler.parse(filename)
+
+        hhmmss = handler.parse_hhmmss('')
+        self.assertTrue(hhmmss == '', 'an empty hhmmss str was expected')
+
+        hhmmss = handler.parse_hhmmss('xxx')
+        self.assertTrue(hhmmss == '', 'an empty hhmmss str was expected')
