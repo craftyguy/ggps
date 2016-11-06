@@ -76,10 +76,9 @@ class BaseHandler(xml.sax.ContentHandler):
         t.set(new_key, str(d_km.as_miles()))
 
     def runcadence_x2(self, t):
-        c = t.get('runcadence')
-        if c:
-            i = int(c)
-            t.set('runcadencex2', str(i * 2))
+        c = t.get('runcadence', 0)
+        i = int(c)
+        t.set('runcadencex2', str(i * 2))
 
     def calculate_elapsed_time(self, t):
         time_str = t.get('time')

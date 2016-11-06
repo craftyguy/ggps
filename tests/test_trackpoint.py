@@ -30,3 +30,13 @@ class TrackpointTest(unittest.TestCase):
         l = obj['lang']
         self.assertTrue(t == 'Trackpoint', "expected the value 'Trackpoint'")
         self.assertTrue(l == 'python', "expected the value 'python'")
+
+    def test_get(self):
+        t = ggps.Trackpoint()
+        t.set('lang', 'python')
+        l = t.get('lang')
+        x = t.get('xxx')
+        z = t.get('zzz', 'zero')
+        self.assertTrue(l == 'python', "expected the value 'python'")
+        self.assertTrue(x == '', "expected the value ''")
+        self.assertTrue(z == 'zero', "expected the value 'zero'")

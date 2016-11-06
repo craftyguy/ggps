@@ -8,11 +8,14 @@ class Trackpoint(object):
         self.values = dict()
         self.values['type'] = 'Trackpoint'
 
-    def get(self, key):
-        return self.values[key]
+    def get(self, key, default_value=''):
+        if key in self.values:
+            return self.values[key]
+        else:
+            return default_value
 
     def set(self, key, value):
-        if key:
+        if key and value:
             self.values[key.lower().strip()] = value.strip()
 
     def __str__(self):
