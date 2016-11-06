@@ -1,4 +1,5 @@
 
+import json
 import unittest
 
 import ggps
@@ -12,12 +13,20 @@ class TrackpointTest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_constructor(self):
+    def test_str(self):
         t = ggps.Trackpoint()
         actual = str(t)
         expected = '<Trackpoint values count:1>'
         msg = "Should be {0}, got {1}".format(expected, actual)
         self.assertTrue(actual == expected, msg)
 
-        t.set('k', 'v')
-        self.assertTrue('v' == t.get('k'), 'Expected get to return v')
+    def test_repr(self):
+        t = ggps.Trackpoint()
+        t.set('lang', 'python')
+        t.set(None, 'python')
+        j = repr(t)
+        obj = json.loads(j)
+        t = obj['type']
+        l = obj['lang']
+        self.assertTrue(t == 'Trackpoint', "expected the value 'Trackpoint'")
+        self.assertTrue(l == 'python', "expected the value 'python'")
