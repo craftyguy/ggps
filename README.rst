@@ -75,8 +75,9 @@ Includes sample data files.
 Changelog
 =========
 
-Version 0.1.3
+Version 0.1.4
 -------------
 
+-  2016/11/06. Version 0.1.4, refactored ggps/ dir. nose2 for tests.
 -  2015/11/07. Version 0.1.3, README.rst
 -  2015/11/07. Version 0.1.1.

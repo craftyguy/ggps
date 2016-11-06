@@ -1,4 +1,5 @@
 
+exclude *.csv
 exclude *.json
 exclude *.sh
 exclude *.txt
@@ -14,13 +15,12 @@ exclude pyvenv.cfg
 exclude build.py
 exclude examples.py
 
-exclude ggps/gpx_handler.py
-exclude ggps/path_parser.py
-exclude ggps/sax.py
-exclude ggps/tcx_handler.py
-exclude ggps/trackpoint.py
-
 include README.rst
 include LICENSE
 
+include .coveragerc
+include requirements.in
+include unittest.cfg
+
+recursive-include man *.1
 recursive-include tests *.py
