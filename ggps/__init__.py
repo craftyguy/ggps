@@ -1,5 +1,5 @@
 __author__ = 'cjoakim'
-__version__ = '0.1.5'
+__version__ = '0.1.6'
 
 """
 ggps library
@@ -291,4 +291,4 @@ class PathHandler(BaseHandler):
         return json.dumps(self.path_counter, sort_keys=True, indent=2)
 
 
-# built on 2016-11-06 15:42:11.053871
+# built on 2016-11-06 15:49:04.933226

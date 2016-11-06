@@ -75,9 +75,11 @@ Includes sample data files.
 Changelog
 =========
 
-Version 0.1.4
+Version 0.1.6
 -------------
 
--  2016/11/06. Version 0.1.4, refactored ggps/ dir. nose2 for tests.
+-  2016/11/06. Version 0.1.6, republished
+-  2016/11/06. Version 0.1.5, refactored ggps/ dir.
+-  2016/11/06. Version 0.1.4, refactored ggps/ dir. nose2 for tests
 -  2015/11/07. Version 0.1.3, README.rst
--  2015/11/07. Version 0.1.1.
+-  2015/11/07. Version 0.1.1

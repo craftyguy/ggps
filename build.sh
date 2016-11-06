@@ -22,5 +22,6 @@ echo 'done'
 
 # deployment steps:
 # check-manifest
+#   -> lists of files in version control and sdist match
 # python setup.py sdist
 # python setup.py sdist upload
