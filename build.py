@@ -41,7 +41,7 @@ class Builder(object):
     def header_lines(self):
         lines = list()
         lines.append("__author__ = 'cjoakim'")
-        lines.append("__version__ = '0.1.4'")
+        lines.append("__version__ = '0.1.5'")
         lines.append("")
         lines.append('"""')
         lines.append("ggps library")
@@ -81,10 +81,10 @@ class Builder(object):
     def code_files(self):
         files = list()
         files.append('ggps/trackpoint.py')
-        files.append('ggps/sax.py')
+        files.append('ggps/base_handler.py')
         files.append('ggps/gpx_handler.py')
         files.append('ggps/tcx_handler.py')
-        files.append('ggps/path_parser.py')
+        files.append('ggps/path_handler.py')
         return files
 
 
