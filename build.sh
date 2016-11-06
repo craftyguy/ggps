@@ -2,8 +2,8 @@
 
 source bin/activate
 
-echo 'building/merging the codebase...'
-python build.py
+# echo 'building/merging the codebase...'
+# python build.py
 
 echo 'checking the merged source code with flake8...'
 flake8 ggps/__init__.py
