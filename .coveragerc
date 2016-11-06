@@ -1,0 +1,6 @@
+[run]
+branch =  True
+
+[html]
+directory = coverage
+
