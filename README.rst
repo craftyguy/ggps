@@ -26,7 +26,8 @@ Use:
 
     >>> import ggps
     >>> infile = 'data/new_river_50k.gpx'
-    >>> handler = ggps.GpxHandler.parse(infile)
+    >>> handler = ggps.GpxHandler()
+    >>> handler.parse(infile)
     >>> trackpoints = handler.trackpoints
     >>> len(trackpoints)
     2636
@@ -41,7 +42,8 @@ Use:
     }
 
     >>> infile = 'data/twin_cities_marathon.tcx'
-    >>> handler = ggps.TcxHandler.parse(infile)
+    >>> handler = ggps.TcxHandler()
+    >>> handler.parse(infile)
     >>> trackpoints = handler.trackpoints
     >>> len(trackpoints)
     2256

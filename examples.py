@@ -26,7 +26,8 @@ if __name__ == "__main__":
         for file_type in file_types():
             infile = "data/{0}.{1}".format(base_name, file_type)
             outfile = "data/paths/{0}_{1}.json".format(base_name, file_type)
-            handler = ggps.PathHandler.parse(infile)
+            handler = ggps.PathHandler()
+            handler.parse(infile)
             with open(outfile, 'wt') as f:
                 f.write((str(handler)))
                 print("PathHandler {0} -> {1}".format(infile, outfile))
@@ -36,9 +37,11 @@ if __name__ == "__main__":
             infile = "data/{0}.{1}".format(base_name, file_type)
             outfile = "data/parsed/{0}_{1}.json".format(base_name, file_type)
             if file_type == 'gpx':
-                handler = ggps.GpxHandler.parse(infile)
+                handler = ggps.GpxHandler()
+                handler.parse(infile)
             else:
-                handler = ggps.TcxHandler.parse(infile)
+                handler = ggps.TcxHandler()
+                handler.parse(infile)
             json_obj = as_json_serializable(handler.trackpoints)
             with open(outfile, 'wt') as f:
                 json_str = json.dumps(json_obj, sort_keys=True, indent=2)
