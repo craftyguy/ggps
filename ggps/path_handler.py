@@ -9,11 +9,9 @@ from ggps.base_handler import BaseHandler
 
 class PathHandler(BaseHandler):
 
-    @classmethod
-    def parse(cls, filename):
-        handler = PathHandler()
-        xml.sax.parse(open(filename), handler)
-        return handler
+    def parse(self, filename):
+        xml.sax.parse(open(filename), self)
+        return self
 
     def __init__(self):
         BaseHandler.__init__(self)

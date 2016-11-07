@@ -75,9 +75,10 @@ Includes sample data files.
 Changelog
 =========
 
-Version 0.1.7
+Version 0.1.8
 -------------
 
+-  2016/11/07. Version 0.1.8, updated packaging
 -  2016/11/06. Version 0.1.7, updated description
 -  2016/11/06. Version 0.1.6, republished
 -  2016/11/06. Version 0.1.5, refactored ggps/ dir.

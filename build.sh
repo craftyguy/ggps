@@ -2,12 +2,16 @@
 
 source bin/activate
 
+echo 'removing previous *.pyc files ...'
+rm ggps/*.pyc
+rm ggps/__pycache__/*.pyc
+rm tests/__pycache__/*.pyc
+
 echo 'removing the output files ...'
-rm ggps/__init__.py
 rm coverage/*.*
 
-echo 'creating/merging file ggps/__init__.py ...'
-python build.py
+# echo 'creating/merging file ggps/__init__.py ...'
+# python build.py
 
 echo 'checking the merged source code with flake8 ...'
 flake8 ggps/*.py
@@ -19,6 +23,9 @@ echo 'creating code coverage report ...'
 nose2 --with-coverage --coverage-report html
 
 echo 'done'
+
+# pre-deployment steps:
+# python setup.py develop
 
 # deployment steps:
 # check-manifest

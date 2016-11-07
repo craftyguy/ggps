@@ -21,7 +21,8 @@ class PathHandlerTest(unittest.TestCase):
         self.assertTrue(actual == expected, msg)
 
         filename = 'data/twin_cities_marathon.gpx'
-        handler = ggps.PathHandler.parse(filename)
+        handler = ggps.PathHandler()
+        handler.parse(filename)
         obj = json.loads(str(handler))
         cnt = obj['gpx|trk|trkseg|trkpt@lat']
         msg = "count of 2256 expected at 'gpx|trk|trkseg|trkpt@lat'"
@@ -29,7 +30,8 @@ class PathHandlerTest(unittest.TestCase):
 
     def test_counts(self):
         filename = 'data/twin_cities_marathon.gpx'
-        handler = ggps.PathHandler.parse(filename)
+        handler = ggps.PathHandler()
+        handler.parse(filename)
         counter = handler.path_counter
 
         cnt = counter['gpx|trk|trkseg|trkpt@lat']
@@ -42,7 +44,8 @@ class PathHandlerTest(unittest.TestCase):
 
     def test_base_parse_hhmmss(self):
         filename = 'data/twin_cities_marathon.gpx'
-        handler = ggps.PathHandler.parse(filename)
+        handler = ggps.PathHandler()
+        handler.parse(filename)
 
         hhmmss = handler.parse_hhmmss('')
         self.assertTrue(hhmmss == '', 'an empty hhmmss str was expected')

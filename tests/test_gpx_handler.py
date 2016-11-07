@@ -47,7 +47,8 @@ class GpxHandlerTest(unittest.TestCase):
 
     def test_twin_cities_marathon_gpx_file(self):
         filename = 'data/twin_cities_marathon.gpx'
-        handler = ggps.GpxHandler.parse(filename)
+        handler = ggps.GpxHandler()
+        handler.parse(filename)
 
         tkpts = handler.trackpoints
         expected_attr_count = 7

@@ -10,11 +10,9 @@ class GpxHandler(BaseHandler):
     tkpt_path = "gpx|trk|trkseg|trkpt"  # ggps_src
     tkpt_path_len = len(tkpt_path)
 
-    @classmethod
-    def parse(cls, filename):
-        handler = GpxHandler()
-        xml.sax.parse(open(filename), handler)
-        return handler
+    def parse(self, filename):
+        xml.sax.parse(open(filename), self)
+        return self
 
     def __init__(self):
         BaseHandler.__init__(self)

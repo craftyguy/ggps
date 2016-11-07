@@ -5,27 +5,29 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
-here = path.abspath(path.dirname(__file__))
+# see http://peterdowns.com/posts/first-time-with-pypi.html
+# see 
 
-# Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+# # Get the long description from the README file
+# here = path.abspath(path.dirname(__file__))
+# with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+#     long_description = f.read()
+
+def description():
+    return 'ggps is a python library for parsing Garmin gpx and tcx files'
+
+def readme():
+    with open("README.rst", encoding='utf-8') as f:
+        return f.read()
 
 setup(
     name='ggps',
-
-    # Versions should comply with PEP440.
-    version='0.1.7',
-
-    description='ggps is a python library for parsing Garmin gpx and tcx files',
-    long_description=long_description,
-
+    version='0.1.8',
+    description=description(),
+    long_description = readme(),
     url='https://github.com/cjoakim/ggps',
-
-    # Author details
     author='Christopher Joakim',
     author_email='christopher.joakim@gmail.com',
-
     license='MIT',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -35,12 +37,9 @@ setup(
         #   4 - Beta
         #   5 - Production/Stable
         'Development Status :: 5 - Production/Stable',
-
         'Intended Audience :: Developers',
         'Topic :: Utilities',
-
         'License :: OSI Approved :: MIT License',
-
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
@@ -50,17 +49,21 @@ setup(
 
     # You can just specify the packages manually here if your project is simple.
     # Or you can use find_packages().
-    packages=find_packages(exclude=['bin', 'contrib', 'coverage', 'data', 'docs', 'tests*']),
+    # packages=find_packages(exclude=['bin', 'contrib', 'coverage', 'data', 'docs', 'tests*']),
+    packages=['ggps'],
+
+    test_suite = 'tests',
 
     # Run-time dependencies; these will be installed by pip when the project is installed.
     # See https://packaging.python.org/en/latest/requirements.html
-    # install_requires=['xxx'],
+    install_requires=[
+        'arrow', 
+        'm26',
+    ],
 
     # Dev and Test dependencies, install like this: $ pip install -e .[dev,test]
     extras_require={
-        'dev':  ['check-manifest', 'flake8'],
-        'test': ['coverage'],
-    },
-
-    test_suite = 'tests',
+        'dev':  ['check-manifest', 'flake8', 'rstcheck', 'Sphinx'],
+        'test': ['coverage', 'cov-core', 'nose2'],
+    }
 )

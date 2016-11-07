@@ -11,11 +11,9 @@ class TcxHandler(BaseHandler):
     tkpt_path = root_tag + "|Activities|Activity|Lap|Track|Trackpoint"
     tkpt_path_len = len(tkpt_path)
 
-    @classmethod
-    def parse(cls, filename):
-        handler = TcxHandler()
-        xml.sax.parse(open(filename), handler)
-        return handler
+    def parse(self, filename):
+        xml.sax.parse(open(filename), self)
+        return self
 
     def __init__(self):
         BaseHandler.__init__(self)

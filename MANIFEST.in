@@ -22,5 +22,4 @@ include .coveragerc
 include requirements.in
 include unittest.cfg
 
-recursive-include man *.1
 recursive-include tests *.py
