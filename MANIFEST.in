@@ -15,6 +15,7 @@ exclude pyvenv.cfg
 exclude build.py
 exclude examples.py
 
+include *.py
 include README.rst
 include LICENSE
 

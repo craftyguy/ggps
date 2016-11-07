@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Shell script to install or upgrade python packages for this pyvenv.
-# Chris Joakim, 2016/11/06
+# Chris Joakim, 2016/11/07
 
 source bin/activate
 

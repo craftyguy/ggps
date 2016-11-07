@@ -77,9 +77,10 @@ Includes sample data files.
 Changelog
 =========
 
-Version 0.1.8
+Version 0.1.9
 -------------
 
+-  2016/11/07. Version 0.1.9, updated packaging
 -  2016/11/07. Version 0.1.8, updated packaging
 -  2016/11/06. Version 0.1.7, updated description
 -  2016/11/06. Version 0.1.6, republished
