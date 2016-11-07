@@ -2,7 +2,8 @@
 import codecs
 import os
 
-from setuptools import setup
+#from setuptools import setup
+from distutils.core import setup
 
 def description():
     return 'ggps is a python library for parsing Garmin gpx and tcx files'
@@ -17,7 +18,7 @@ def readme():
 
 setup(
     name='ggps',
-    version='0.1.9',
+    version='0.1.11',
     description='ggps is a python library for parsing Garmin gpx and tcx files',
     long_description=readme(),
     url='https://github.com/cjoakim/ggps',
