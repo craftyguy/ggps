@@ -1,0 +1,7 @@
+include *.in
+include *.py
+include *.sh
+include .coveragerc
+include LICENSE
+include unittest.cfg
+recursive-include tests *.py
