@@ -13,8 +13,8 @@ rm coverage/*.*
 # echo 'creating/merging file ggps/__init__.py ...'
 # python build.py
 
-echo 'merging the codebase ...'
-python build.py
+# echo 'merging the codebase ...'
+# python build.py
 
 echo 'checking the merged source code with flake8 ...'
 flake8 ggps/__init__.py
@@ -35,3 +35,9 @@ echo 'done'
 #   -> lists of files in version control and sdist match
 # python setup.py sdist
 # python setup.py sdist upload
+
+# https://pypi.python.org/pypi (current)
+# https://pypi.org  (new)
+# https://packaging.python.org
+# https://setuptools.readthedocs.io/en/latest/setuptools.html
+# https://glyph.twistedmatrix.com/2016/08/python-packaging.html

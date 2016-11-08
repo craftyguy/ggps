@@ -1,33 +1,30 @@
 
-import codecs
 import os
-
-#from setuptools import setup
-from distutils.core import setup
+from setuptools import setup
 
 def description():
     return 'ggps is a python library for parsing Garmin gpx and tcx files'
 
-def fpath(name):
-    return os.path.join(os.path.dirname(__file__), name)
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 def readme():
-    filename = fpath('README.rst')
-    with codecs.open(filename, encoding='utf-8') as f:
-        return f.read()
+    return read('README.rst')
 
 setup(
     name='ggps',
-    version='0.1.11',
+    version='0.1.12',
     description='ggps is a python library for parsing Garmin gpx and tcx files',
-    long_description=readme(),
+    long_description='ggps is a python library for parsing Garmin gpx and tcx files',
     url='https://github.com/cjoakim/ggps',
     author='Christopher Joakim',
     author_email='christopher.joakim@gmail.com',
     license='MIT',
     packages=['ggps'],
-    zip_safe=False,
-    install_requires=['arrow','m26'],
+    install_requires=[
+        'arrow',
+        'm26'
+    ],
     test_suite="tests",
     classifiers=[
         'Development Status :: 4 - Beta',
