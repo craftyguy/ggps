@@ -11,6 +11,7 @@ def data_files():
     files.append('dav_track_5k')
     files.append('new_river_50k')
     files.append('twin_cities_marathon')
+    files.append('activity_607442311')
     return files
 
 def as_json_serializable(trackpoints_list):
