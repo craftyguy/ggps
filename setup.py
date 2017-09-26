@@ -13,7 +13,7 @@ def readme():
 
 setup(
     name='ggps',
-    version='0.1.12',
+    version='0.1.13',
     description='ggps is a python library for parsing Garmin gpx and tcx files',
     long_description='ggps is a python library for parsing Garmin gpx and tcx files',
     url='https://github.com/cjoakim/ggps',
