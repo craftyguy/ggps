@@ -6,6 +6,6 @@ cov-core
 coverage
 flake8
 m26
-nose2
+pytest
 Sphinx
 rstcheck
