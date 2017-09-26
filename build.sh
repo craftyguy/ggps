@@ -10,17 +10,11 @@ rm tests/__pycache__/*.pyc
 echo 'removing the output files ...'
 rm coverage/*.*
 
-echo 'merging the codebase ...'
-python build.py
-
-echo 'checking the merged source code with flake8 ...'
-flake8 ggps/__init__.py
+echo 'checking the source code with flake8 ...'
+flake8 src --ignore F401
 
 echo 'executing unit tests ...'
-python -m nose2 -v
-
-# echo 'creating code coverage report ...'
-# nose2 --with-coverage --coverage-report html
+pytest tests
 
 echo 'done'
 

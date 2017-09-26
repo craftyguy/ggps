@@ -7,14 +7,14 @@ ggps library
 
 VERSION = __version__
 
-import json
-import m26
-import xml.sax
+# import json
+# import m26
+# import xml.sax
 
-from collections import defaultdict
+# from collections import defaultdict
 
-from ggps.trackpoint import *
-from ggps.base_handler import *
-from ggps.gpx_handler import *
-from ggps.path_handler import *
-from ggps.tcx_handler import *
+from ggps.trackpoint import Trackpoint
+from ggps.base_handler import BaseHandler
+from ggps.gpx_handler import GpxHandler
+from ggps.path_handler import PathHandler
+from ggps.tcx_handler import TcxHandler
