@@ -80,6 +80,7 @@ Changelog
 Version 0.1.12
 --------------
 
+-  2017/09/26. Version 0.1.13, packaging
 -  2016/11/07. Version 0.1.12, updated packaging
 -  2016/11/07. Version 0.1.11, updated packaging
 -  2016/11/07. Version 0.1.10, updated packaging
