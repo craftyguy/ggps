@@ -1,7 +1,6 @@
 
 import os
-
-from setuptools import setup, find_packages
+from setuptools import setup
 
 def description():
     return 'ggps is a python library for parsing Garmin gpx and tcx files'
@@ -14,15 +13,14 @@ def readme():
 
 setup(
     name='ggps',
-    version='0.2.0',
+    version='0.1.13',
     description='ggps is a python library for parsing Garmin gpx and tcx files',
     long_description='ggps is a python library for parsing Garmin gpx and tcx files',
     url='https://github.com/cjoakim/ggps',
     author='Christopher Joakim',
     author_email='christopher.joakim@gmail.com',
     license='MIT',
-    packages=find_packages(where='src'),
-    package_dir={'': 'src'},
+    packages=['ggps'],
     install_requires=[
         'arrow',
         'm26'

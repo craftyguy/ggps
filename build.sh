@@ -33,6 +33,9 @@ echo 'done'
 # python setup.py sdist
 # python setup.py sdist upload
 
+# python setup.py sdist upload -r local
+# ls -al /Users/cjoakim/pypi-packages
+
 # https://pypi.python.org/pypi (current)
 # https://pypi.org  (new)
 # https://packaging.python.org
