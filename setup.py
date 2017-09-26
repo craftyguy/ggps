@@ -21,8 +21,7 @@ setup(
     author='Christopher Joakim',
     author_email='christopher.joakim@gmail.com',
     license='MIT',
-    packages=find_packages(where='src'),
-    package_dir={'': 'src'},
+    packages=['ggps'],
     install_requires=[
         'arrow',
         'm26'

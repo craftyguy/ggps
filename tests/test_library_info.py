@@ -18,4 +18,4 @@ class LibraryInfoTest(unittest.TestCase):
 
     def test_version(self):
         value = ggps.VERSION
-        self.assertTrue(value == '0.1.13', "VERSION is incorrect")
+        self.assertTrue(value == '0.2.0', "VERSION is incorrect")
