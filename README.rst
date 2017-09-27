@@ -77,18 +77,19 @@ Includes sample data files.
 Changelog
 =========
 
-Version 0.1.12
+Version 0.2.0
 --------------
 
--  2017/09/26. Version 0.1.13, packaging
--  2016/11/07. Version 0.1.12, updated packaging
--  2016/11/07. Version 0.1.11, updated packaging
--  2016/11/07. Version 0.1.10, updated packaging
--  2016/11/07. Version 0.1.9,  updated packaging
--  2016/11/07. Version 0.1.8,  updated packaging
--  2016/11/06. Version 0.1.7,  updated description
--  2016/11/06. Version 0.1.6,  republished
+-  2017/09/27. Version 0.2.0,  Converted to the pytest testing framework.
+-  2017/09/26. Version 0.1.13, packaging.
+-  2016/11/07. Version 0.1.12, updated packaging.
+-  2016/11/07. Version 0.1.11, updated packaging.
+-  2016/11/07. Version 0.1.10, updated packaging.
+-  2016/11/07. Version 0.1.9,  updated packaging.
+-  2016/11/07. Version 0.1.8,  updated packaging.
+-  2016/11/06. Version 0.1.7,  updated description.
+-  2016/11/06. Version 0.1.6,  republished.
 -  2016/11/06. Version 0.1.5,  refactored ggps/ dir.
--  2016/11/06. Version 0.1.4,  refactored ggps/ dir. nose2 for tests
--  2015/11/07. Version 0.1.3,  README.rst
--  2015/11/07. Version 0.1.1
+-  2016/11/06. Version 0.1.4,  refactored ggps/ dir. nose2 for tests.
+-  2015/11/07. Version 0.1.3,  Added README.rst
+-  2015/11/07. Version 0.1.1   Initial release.
