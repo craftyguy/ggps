@@ -14,7 +14,8 @@ echo 'checking the source code with flake8 ...'
 flake8 src --ignore F401
 
 echo 'executing unit tests ...'
-pytest -v tests/
+rm -rf coverage/
+pytest -v --cov=ggps/ --cov-report html tests/
 
 echo 'done'
 

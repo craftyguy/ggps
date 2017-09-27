@@ -7,5 +7,6 @@ coverage
 flake8
 m26
 pytest
+pytest-cov
 Sphinx
 rstcheck

@@ -1,5 +1,12 @@
+# .coveragerc to control coverage.py
 [run]
-branch =  True
+branch = False
+source = ggps
+
+[report]
+omit = 
+    */lib/*
+    */tests/*
 
 [html]
 directory = coverage
