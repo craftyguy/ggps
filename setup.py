@@ -3,37 +3,37 @@ import os
 
 from setuptools import setup, find_packages
 
-def description():
-    return 'ggps is a python library for parsing Garmin gpx and tcx files'
-
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
-def readme():
-    return read('README.rst')
+NAME = 'ggps'
+VERSION = '0.2.0'
+DESCRIPTION = 'ggps is a python library for parsing and enhancing Garmin gpx and tcx files'
+URL = 'https://github.com/cjoakim/ggps'
+AUTHOR = 'Christopher Joakim'
+EMAIL = 'christopher.joakim@gmail.com'
+LICENSE = 'MIT'
 
 setup(
-    name='ggps',
-    version='0.2.0',
-    description='ggps is a python library for parsing Garmin gpx and tcx files',
-    long_description='ggps is a python library for parsing Garmin gpx and tcx files',
-    url='https://github.com/cjoakim/ggps',
-    author='Christopher Joakim',
-    author_email='christopher.joakim@gmail.com',
-    license='MIT',
-    packages=['ggps'],
+    name=NAME,
+    version=VERSION,
+    description=DESCRIPTION,
+    long_description=DESCRIPTION,
+    url=URL,
+    author=AUTHOR,
+    author_email=EMAIL,
+    license=LICENSE,
+    packages=[NAME],
     install_requires=[
         'arrow',
         'm26'
     ],
     test_suite="tests",
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Topic :: Utilities',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6'
     ]
 )
