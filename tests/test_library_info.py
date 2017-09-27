@@ -1,21 +1,13 @@
 
-import unittest
+import pytest
 
 import ggps
 
 
-class LibraryInfoTest(unittest.TestCase):
+def test_author():
+    value = ggps.__author__
+    assert(value == 'cjoakim')
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
-    def test_author(self):
-        value = ggps.__author__
-        self.assertTrue(value == 'cjoakim', "author is incorrect")
-
-    def test_version(self):
-        value = ggps.VERSION
-        self.assertTrue(value == '0.2.0', "VERSION is incorrect")
+def test_version():
+    value = ggps.VERSION
+    assert(value == '0.2.0')

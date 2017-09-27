@@ -1,54 +1,38 @@
 
 import json
-import unittest
+import pytest
 
 import ggps
 
 
-class PathHandlerTest(unittest.TestCase):
+def test_str():
+    handler = ggps.PathHandler()
+    actual = str(handler)
+    expected = '{}'
+    assert(actual == expected)
 
-    def setUp(self):
-        pass
+    filename = 'data/twin_cities_marathon.gpx'
+    handler = ggps.PathHandler()
+    handler.parse(filename)
+    obj = json.loads(str(handler))
+    cnt = obj['gpx|trk|trkseg|trkpt@lat']
+    assert(cnt == 2256)
 
-    def tearDown(self):
-        pass
+def test_counts():
+    filename = 'data/twin_cities_marathon.gpx'
+    handler = ggps.PathHandler()
+    handler.parse(filename)
+    counter = handler.path_counter
+    cnt = counter['gpx|trk|trkseg|trkpt@lat']
+    assert(cnt == 2256)
+    cnt = counter['gpx|metadata|time']
+    assert(cnt == 1)
 
-    def test_str(self):
-        handler = ggps.PathHandler()
-        actual = str(handler)
-        expected = '{}'
-        msg = "Should be {0}, got {1}".format(expected, actual)
-        self.assertTrue(actual == expected, msg)
-
-        filename = 'data/twin_cities_marathon.gpx'
-        handler = ggps.PathHandler()
-        handler.parse(filename)
-        obj = json.loads(str(handler))
-        cnt = obj['gpx|trk|trkseg|trkpt@lat']
-        msg = "count of 2256 expected at 'gpx|trk|trkseg|trkpt@lat'"
-        self.assertTrue(cnt == 2256, msg)
-
-    def test_counts(self):
-        filename = 'data/twin_cities_marathon.gpx'
-        handler = ggps.PathHandler()
-        handler.parse(filename)
-        counter = handler.path_counter
-
-        cnt = counter['gpx|trk|trkseg|trkpt@lat']
-        msg = "count of 2256 expected at 'gpx|trk|trkseg|trkpt@lat'"
-        self.assertTrue(cnt == 2256, msg)
-
-        cnt = counter['gpx|metadata|time']
-        msg = "count of 1 expected at 'gpx|metadata|time'"
-        self.assertTrue(cnt == 1, msg)
-
-    def test_base_parse_hhmmss(self):
-        filename = 'data/twin_cities_marathon.gpx'
-        handler = ggps.PathHandler()
-        handler.parse(filename)
-
-        hhmmss = handler.parse_hhmmss('')
-        self.assertTrue(hhmmss == '', 'an empty hhmmss str was expected')
-
-        hhmmss = handler.parse_hhmmss('xxx')
-        self.assertTrue(hhmmss == '', 'an empty hhmmss str was expected')
+def test_base_parse_hhmmss():
+    filename = 'data/twin_cities_marathon.gpx'
+    handler = ggps.PathHandler()
+    handler.parse(filename)
+    hhmmss = handler.parse_hhmmss('')
+    assert(hhmmss == '')
+    hhmmss = handler.parse_hhmmss('xxx')
+    assert(hhmmss == '')
