@@ -1,8 +1,8 @@
-<project name="sb-js" default="backup" basedir=".">
+<project name="backup" default="backup" basedir=".">
 
     <description>
         Ant script to create a zip file backup of this project.
-        Chris Joakim, 2015/11/01
+        Chris Joakim, 2017/09/27
     </description>
 
     <!-- These are the only properties you should have to change.  -->
@@ -12,7 +12,7 @@
 
     <!-- These properties are derived from the above. -->
     <property name="_projectDir"    value="${_projectRoot}${_projectName}" />
-    <property name="_backupDir"     value="${_backupRoot}/${_projectName}" />
+    <property name="_backupDir"     value="${_backupRoot}${_projectName}" />
 
     <!-- ******************************************************************* -->
 
@@ -49,7 +49,7 @@
 
         <zip zipfile="${_zipFilename}"
              basedir="${_projectDir}"
-             excludes=".git/, .idea/, bin/, log/, tmp/, **/txt_merged.txt, **/*.gz, **/*.zip" />
+             excludes=".cache/, .git/, .idea/, bin/, lib/, log/, tmp/, **/txt_merged.txt, **/*.gz, **/*.pyc, **/*.zip" />
 
         <echo message="done" />
     </target>
