@@ -11,7 +11,6 @@ echo 'checking the source code with flake8 ...'
 flake8 ggps --ignore F401
 
 echo 'executing unit tests with code coverage ...'
-rm -rf coverage/
 pytest -v --cov=ggps/ --cov-report html tests/
 
 echo 'done'
