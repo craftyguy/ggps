@@ -3,13 +3,13 @@
     <description>
         Ant script to create a zip file backup of this project.
         ant -f backup.xml
-        Chris Joakim, 2017/09/27
+        Chris Joakim, 2020/02/18
     </description>
 
     <!-- These are the only properties you should have to change.  -->
-    <property name="_projectRoot"   value="/Users/cjoakim/github/" />
+    <property name="_projectRoot"   value="/Users/${user.name}/github/" />
     <property name="_projectName"   value="ggps" />
-    <property name="_backupRoot"    value="/Backups/projects/" />
+    <property name="_backupRoot"    value="/Users/${user.name}/Backups/projects" />
 
     <!-- These properties are derived from the above. -->
     <property name="_projectDir"    value="${_projectRoot}${_projectName}" />
