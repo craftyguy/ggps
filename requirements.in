@@ -7,7 +7,7 @@ arrow
 cov-core
 coverage
 flake8
-m26
+m26 >=0.2.1
 pytest
 pytest-cov
 Sphinx

@@ -10,4 +10,4 @@ def test_author():
 
 def test_version():
     value = ggps.VERSION
-    assert(value == '0.2.0')
+    assert(value == '0.2.1')
