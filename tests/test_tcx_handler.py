@@ -61,7 +61,7 @@ def expected_last_trackpoint():
         "type": "Trackpoint"
     }
 
-def test_twin_cities_marathon_gpx_file():
+def test_twin_cities_marathon_tcx_file():
     filename = 'data/twin_cities_marathon.tcx'
     handler = ggps.TcxHandler()
     handler.parse(filename)

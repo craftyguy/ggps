@@ -1,6 +1,8 @@
 # pip
 # check-manifest
 
+Jinja2>=2.10.1
+
 arrow
 cov-core
 coverage

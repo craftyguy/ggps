@@ -11,7 +11,7 @@ cov-core==1.15.0
 coverage==4.0.2
 docutils==0.12            # via rstcheck, sphinx
 flake8==2.5.0
-jinja2==2.8               # via sphinx
+jinja2==2.11.1
 m26==0.1.0
 markupsafe==0.23          # via jinja2
 mccabe==0.3.1             # via flake8
