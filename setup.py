@@ -22,7 +22,6 @@ setup(
     license=LICENSE,
     packages=['ggps'],
     install_requires=[
-        'arrow',
         'm26'
     ],
     test_suite="tests",
