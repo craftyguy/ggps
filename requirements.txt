@@ -5,29 +5,29 @@
 #    pip-compile --output-file=requirements.txt requirements.in
 #
 alabaster==0.7.6          # via sphinx
-arrow==0.7.0
+arrow==0.7.0              # via -r requirements.in (line 6), m26
 babel==2.1.1              # via sphinx
-cov-core==1.15.0
-coverage==4.0.2
+cov-core==1.15.0          # via -r requirements.in (line 7)
+coverage==4.0.2           # via -r requirements.in (line 8), cov-core, pytest-cov
 docutils==0.12            # via rstcheck, sphinx
-flake8==2.5.0
-jinja2==2.11.1
-m26==0.2.1
+flake8==2.5.0             # via -r requirements.in (line 9)
+jinja2==2.11.1            # via -r requirements.in (line 4), sphinx
+m26==0.2.1                # via -r requirements.in (line 10)
 markupsafe==0.23          # via jinja2
 mccabe==0.3.1             # via flake8
 pep8==1.5.7               # via flake8
 py==1.4.34                # via pytest
 pyflakes==1.0.0           # via flake8
 pygments==2.0.2           # via sphinx
-pytest-cov==2.5.1
-pytest==3.2.2
+pytest-cov==2.5.1         # via -r requirements.in (line 12)
+pytest==3.2.2             # via -r requirements.in (line 11), pytest-cov
 python-dateutil==2.4.2    # via arrow
 pytz==2015.7              # via babel
-rstcheck==1.4.1
+rstcheck==1.4.1           # via -r requirements.in (line 14)
 six==1.10.0               # via python-dateutil, sphinx
 snowballstemmer==1.2.0    # via sphinx
 sphinx-rtd-theme==0.1.9   # via sphinx
-sphinx==1.3.1
+sphinx==1.3.1             # via -r requirements.in (line 13), rstcheck, sphinx-rtd-theme
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
