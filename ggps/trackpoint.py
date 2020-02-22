@@ -16,7 +16,11 @@ class Trackpoint(object):
 
     def set(self, key, value):
         if key and value:
-            self.values[key.lower().strip()] = value.strip()
+            if ':' in key:
+                ns_removed_tagname = key.split(':')[1]
+                self.values[ns_removed_tagname.lower().strip()] = value.strip()
+            else:
+                self.values[key.lower().strip()] = value.strip()
 
     def __str__(self):
         template = "<Trackpoint values count:{0}>"

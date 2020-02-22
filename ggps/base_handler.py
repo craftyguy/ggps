@@ -75,10 +75,11 @@ class BaseHandler(xml.sax.ContentHandler):
         d_km = m26.Distance(km, m26.Constants.uom_kilometers())
         t.set(new_key, str(d_km.as_miles()))
 
-    def runcadence_x2(self, t):
-        c = t.get('runcadence', 0)
+    def cadence_x2(self, t):
+        c = t.get('cadence', 0)
         i = int(c)
-        t.set('runcadencex2', str(i * 2))
+        if i > 0:
+            t.set('cadencex2', str(i * 2))
 
     def calculate_elapsed_time(self, t):
         time_str = t.get('time')

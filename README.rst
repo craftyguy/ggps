@@ -23,43 +23,61 @@ Use:
 .. code-block:: pycon
 
     >>> import ggps
-
-    >>> import ggps
-    >>> infile = 'data/new_river_50k.gpx'
+    >>>
+    >>> infile = 'data/activity_4564516081.gpx'
+    >>> handler = ggps.GpxHandler()
+    >>> handler.parse(infile)
+    >>> trackpoints = handler.trackpoints
+    >>> print(repr(trackpoints[-1]))
+    {
+      "cadence": "86",
+      "cadencex2": "172",
+      "elapsedtime": "02:51:26",
+      "heartratebpm": "171",
+      "latitudedegrees": "35.50814299844205379486083984375",
+      "longitudedegrees": "-80.83528247661888599395751953125",
+      "seq": "2177",
+      "time": "2020-02-17T20:06:28.000Z",
+      "trackpointextension": "",
+      "type": "Trackpoint"
+    }
+    >>>
+    >>> infile = 'data/twin_cities_marathon.gpx'
     >>> handler = ggps.GpxHandler()
     >>> handler.parse(infile)
     >>> trackpoints = handler.trackpoints
     >>> len(trackpoints)
-    2636
-    >>> print(trackpoints[-1].values)
+    2256
+    >>> print(repr(trackpoints[-1]))
     {
-      "elapsedtime": "05:42:18",
-      "latitudedegrees": "36.715144934132695",
-      "longitudedegrees": "-80.9767899569124",
-      "seq": "2636",
-      "time": "2015-10-17T17:42:30.000Z",
+      "elapsedtime": "04:14:24",
+      "heartratebpm": "161",
+      "latitudedegrees": "44.95180849917233",
+      "longitudedegrees": "-93.10493202880025",
+      "seq": "2256",
+      "time": "2014-10-05T17:22:17.000Z",
       "type": "Trackpoint"
     }
-
+    >>>
     >>> infile = 'data/twin_cities_marathon.tcx'
     >>> handler = ggps.TcxHandler()
     >>> handler.parse(infile)
     >>> trackpoints = handler.trackpoints
     >>> len(trackpoints)
     2256
-    >>> print(trackpoints[-1].values)
+    >>> print(repr(trackpoints[-1]))
     {
-      "altitudefeet": "864.82941635",
+      "altitudefeet": "864.8294163501167",
       "altitudemeters": "263.6000061035156",
-      "distancekilometers": "42.6354492187",
+      "cadence": "77",
+      "cadencex2": "154",
+      "distancekilometers": "42.63544921875",
       "distancemeters": "42635.44921875",
-      "distancemiles": "26.4924399126",
+      "distancemiles": "26.492439912628992",
       "elapsedtime": "04:14:24",
       "heartratebpm": "161",
       "latitudedegrees": "44.95180849917233",
       "longitudedegrees": "-93.10493202880025",
-      "runcadence": "77",
-      "runcadencex2": "154",
       "seq": "2256",
       "speed": "3.5460000038146977",
       "time": "2014-10-05T17:22:17.000Z",
@@ -80,7 +98,7 @@ Changelog
 Version 0.3.0
 --------------
 
--  2020/02/19. Version 0.3.0,  Added RunCadence.
+-  2020/02/22. Version 0.3.0,  Parsing improvements, normalize 'cadence' and 'heartratebpm' attribute names.
 -  2020/02/19. Version 0.2.1,  Upgraded the m26 and Jinga2 libraries.
 -  2017/09/27. Version 0.2.0,  Converted to the pytest testing framework.
 -  2017/09/26. Version 0.1.13, packaging.

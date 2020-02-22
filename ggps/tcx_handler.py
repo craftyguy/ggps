@@ -38,12 +38,14 @@ class TcxHandler(BaseHandler):
                     retain = False
                 elif tag_name == 'Position':
                     retain = False
-                elif tag_name == 'TPX':
-                    retain = False
                 elif tag_name == 'HeartRateBpm':
                     retain = False
                 elif tag_name == 'Value':
                     tag_name = 'HeartRateBpm'
+                elif tag_name.endswith('TPX'):
+                    retain = False
+                elif tag_name.endswith('RunCadence'):
+                    tag_name = 'cadence'
 
                 if retain:
                     self.curr_tkpt.set(tag_name, self.curr_text)
@@ -61,5 +63,5 @@ class TcxHandler(BaseHandler):
             self.meters_to_feet(t, 'altitudemeters', 'altitudefeet')
             self.meters_to_miles(t, 'distancemeters', 'distancemiles')
             self.meters_to_km(t, 'distancemeters', 'distancekilometers')
-            self.runcadence_x2(t)
+            self.cadence_x2(t)
             self.calculate_elapsed_time(t)

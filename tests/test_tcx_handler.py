@@ -15,8 +15,8 @@ def expected_tcm_first_trackpoint():
         "heartratebpm": "85",
         "latitudedegrees": "44.97431952506304",
         "longitudedegrees": "-93.26310088858008",
-        "runcadence": "89",
-        "runcadencex2": "178",
+        "cadence": "89",
+        "cadencex2": "178",
         "seq": "1",
         "speed": "0.0",
         "time": "2014-10-05T13:07:53.000Z",
@@ -34,8 +34,8 @@ def expected_tcm_middle_trackpoint():
         "heartratebpm": "140",
         "latitudedegrees": "44.959017438814044",
         "longitudedegrees": "-93.21290854364634",
-        "runcadence": "84",
-        "runcadencex2": "168",
+        "cadence": "84",
+        "cadencex2": "168",
         "seq": "1747",
         "speed": "2.8269999027252193",
         "time": "2014-10-05T16:21:12.000Z",
@@ -53,8 +53,8 @@ def expected_tcm_last_trackpoint():
         "heartratebpm": "161",
         "latitudedegrees": "44.95180849917233",
         "longitudedegrees": "-93.10493202880025",
-        "runcadence": "77",
-        "runcadencex2": "154",
+        "cadence": "77",
+        "cadencex2": "154",
         "seq": "2256",
         "speed": "3.5460000038146977",
         "time": "2014-10-05T17:22:17.000Z",
@@ -80,11 +80,15 @@ def test_twin_cities_marathon_tcx_file():
     assert(actual == expected)
 
     # check the first trackpoint
-    expected_tcm_tkpt = expected_tcm_first_trackpoint()
-    actual_tkpt = handler.trackpoints[0]
+    expected_tkpt = expected_tcm_first_trackpoint()
+    expected_keys = sorted(expected_tkpt.keys())
+    actual_tkpt   = handler.trackpoints[0]
+    actual_keys   = sorted(actual_tkpt.values.keys())
+    assert(expected_keys == actual_keys)
+
     assert(len(actual_tkpt.values) == expected_tcm_attr_count)
-    for key in expected_tcm_tkpt.keys():
-        expected, actual = expected_tcm_tkpt[key], actual_tkpt.values[key]
+    for key in expected_tkpt.keys():
+        expected, actual = expected_tkpt[key], actual_tkpt.values[key]
         assert(expected == actual)
 
     # check a trackpoint at ~mile 20

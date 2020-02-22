@@ -44,6 +44,13 @@ class GpxHandler(BaseHandler):
                     retain = False
                 elif tag_name == 'gpxtpx:hr':
                     tag_name = 'heartratebpm'
+                elif tag_name == 'ns3:hr':
+                    tag_name = 'heartratebpm'
+
+                elif tag_name == 'gpxtpx:cad':
+                    tag_name = 'cadence'
+                elif tag_name == 'ns3:cad':
+                    tag_name = 'cadence'
 
                 if retain:
                     self.curr_tkpt.set(tag_name, self.curr_text)
@@ -59,3 +66,4 @@ class GpxHandler(BaseHandler):
 
             t.set('seq', "{0}".format(idx + 1))
             self.calculate_elapsed_time(t)
+            self.cadence_x2(t)

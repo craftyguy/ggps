@@ -7,28 +7,13 @@ import os
 
 import ggps
 
+# python ggps-examples.py > data/ggps-examples.txt
+
+
 if __name__ == "__main__":
 
     print('version {}'.format(ggps.VERSION))
     print(str(inspect.ismodule(ggps)))
-
-    if False:
-        infile = 'data/twin_cities_marathon.gpx'
-        handler = ggps.GpxHandler()
-        handler.parse(infile)
-        trackpoints = handler.trackpoints
-        count = len(trackpoints)
-        print('{} trackpoints loaded from file {}'.format(count, infile))
-
-    if False:
-        infile = 'data/twin_cities_marathon.tcx'
-        handler = ggps.TcxHandler()
-        handler.parse(infile)
-        trackpoints = handler.trackpoints
-        count = len(trackpoints)
-        print('{} trackpoints loaded from file {}'.format(count, infile))
-        for t in trackpoints:
-            print(repr(t))
 
     if True:
         infile = 'data/twin_cities_marathon.tcx'
@@ -37,7 +22,33 @@ if __name__ == "__main__":
         print(str(handler))
         obj = json.loads(str(handler))
 
-    if False:
+    if True:
+        infile = 'data/twin_cities_marathon.tcx'
+        handler = ggps.TcxHandler()
+        handler.parse(infile)
+        trackpoints = handler.trackpoints
+        count = len(trackpoints)
+        print('{} trackpoints loaded from file {}'.format(count, infile))
+        for t in trackpoints:
+            print(repr(t))
+        print('---')
+        print(repr(trackpoints[-1]))
+        print('{} trackpoints loaded from file {}'.format(count, infile))
+
+    if True:
+        infile = 'data/twin_cities_marathon.gpx'
+        handler = ggps.GpxHandler()
+        handler.parse(infile)
+        trackpoints = handler.trackpoints
+        count = len(trackpoints)
+        print('{} trackpoints loaded from file {}'.format(count, infile))
+        for t in trackpoints:
+            print(repr(t))
+        print('---')
+        print(repr(trackpoints[-1]))
+        print('{} trackpoints loaded from file {}'.format(count, infile))
+
+    if True:
         infile = 'data/activity_4564516081.tcx'
         handler = ggps.TcxHandler()
         handler.parse(infile)
@@ -46,6 +57,18 @@ if __name__ == "__main__":
         print('{} trackpoints loaded from file {}'.format(count, infile))
         for t in trackpoints:
             print(repr(t))
+        print('trackpoint count: {}'.format(len(trackpoints)))
 
-    print('trackpoint count: {}'.format(len(trackpoints)))
+    if False:
+        infile = 'data/activity_4564516081.gpx'
+        handler = ggps.GpxHandler()
+        handler.parse(infile)
+        trackpoints = handler.trackpoints
+        count = len(trackpoints)
+        print('{} trackpoints loaded from file {}'.format(count, infile))
+        for t in trackpoints:
+            print(repr(t))
+
+    print('version {}'.format(ggps.VERSION))
+    print(str(inspect.ismodule(ggps)))
 
