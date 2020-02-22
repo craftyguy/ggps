@@ -23,7 +23,7 @@ Use:
 .. code-block:: pycon
 
     >>> import ggps
-    >>>
+
     >>> infile = 'data/activity_4564516081.gpx'
     >>> handler = ggps.GpxHandler()
     >>> handler.parse(infile)
@@ -41,13 +41,14 @@ Use:
       "trackpointextension": "",
       "type": "Trackpoint"
     }
-    >>>
+
     >>> infile = 'data/twin_cities_marathon.gpx'
     >>> handler = ggps.GpxHandler()
     >>> handler.parse(infile)
     >>> trackpoints = handler.trackpoints
     >>> len(trackpoints)
     2256
+
     >>> print(repr(trackpoints[-1]))
     {
       "elapsedtime": "04:14:24",
@@ -58,13 +59,14 @@ Use:
       "time": "2014-10-05T17:22:17.000Z",
       "type": "Trackpoint"
     }
-    >>>
+
     >>> infile = 'data/twin_cities_marathon.tcx'
     >>> handler = ggps.TcxHandler()
     >>> handler.parse(infile)
     >>> trackpoints = handler.trackpoints
     >>> len(trackpoints)
     2256
+
     >>> print(repr(trackpoints[-1]))
     {
       "altitudefeet": "864.8294163501167",
@@ -83,6 +85,7 @@ Use:
       "time": "2014-10-05T17:22:17.000Z",
       "type": "Trackpoint"
     }
+
 
 Source Code
 ===========
