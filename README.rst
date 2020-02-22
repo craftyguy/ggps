@@ -77,10 +77,11 @@ Includes sample data files.
 Changelog
 =========
 
-Version 0.2.1
+Version 0.3.0
 --------------
 
--  2020/02/19. Version 0.2.1,  Upgraded the m26 and Jinga2 libraries
+-  2020/02/19. Version 0.3.0,  Added RunCadence.
+-  2020/02/19. Version 0.2.1,  Upgraded the m26 and Jinga2 libraries.
 -  2017/09/27. Version 0.2.0,  Converted to the pytest testing framework.
 -  2017/09/26. Version 0.1.13, packaging.
 -  2016/11/07. Version 0.1.12, updated packaging.

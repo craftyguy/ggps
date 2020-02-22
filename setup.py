@@ -4,7 +4,7 @@ import os
 from setuptools import setup, find_packages
 
 NAME = 'ggps'
-VERSION = '0.2.1'
+VERSION = '0.3.0'
 DESCRIPTION = 'ggps is a python library for parsing and enhancing Garmin gpx and tcx files'
 URL = 'https://github.com/cjoakim/ggps'
 AUTHOR = 'Christopher Joakim'

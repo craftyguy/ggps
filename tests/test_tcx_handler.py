@@ -4,7 +4,7 @@ import pytest
 import ggps
 
 
-def expected_first_trackpoint():
+def expected_tcm_first_trackpoint():
     return {
         "altitudefeet": "850.3937408367167",
         "altitudemeters": "259.20001220703125",
@@ -23,7 +23,7 @@ def expected_first_trackpoint():
         "type": "Trackpoint"
     }
 
-def expected_middle_trackpoint():
+def expected_tcm_middle_trackpoint():
     return {
         "altitudefeet": "805.7742982398804",
         "altitudemeters": "245.60000610351562",
@@ -42,7 +42,7 @@ def expected_middle_trackpoint():
         "type": "Trackpoint"
     }
 
-def expected_last_trackpoint():
+def expected_tcm_last_trackpoint():
     return {
         "altitudefeet": "864.8294163501167",
         "altitudemeters": "263.6000061035156",
@@ -67,7 +67,7 @@ def test_twin_cities_marathon_tcx_file():
     handler.parse(filename)
 
     tkpts = handler.trackpoints
-    expected_attr_count = 15
+    expected_tcm_attr_count = 15
 
     assert(handler.curr_depth() == 0)
     assert(handler.curr_path() == '')
@@ -80,30 +80,42 @@ def test_twin_cities_marathon_tcx_file():
     assert(actual == expected)
 
     # check the first trackpoint
-    expected_tkpt = expected_first_trackpoint()
+    expected_tcm_tkpt = expected_tcm_first_trackpoint()
     actual_tkpt = handler.trackpoints[0]
-    assert(len(actual_tkpt.values) == expected_attr_count)
-    for key in expected_tkpt.keys():
-        expected, actual = expected_tkpt[key], actual_tkpt.values[key]
+    assert(len(actual_tkpt.values) == expected_tcm_attr_count)
+    for key in expected_tcm_tkpt.keys():
+        expected, actual = expected_tcm_tkpt[key], actual_tkpt.values[key]
         assert(expected == actual)
 
     # check a trackpoint at ~mile 20
-    expected_tkpt = expected_middle_trackpoint()
+    expected_tcm_tkpt = expected_tcm_middle_trackpoint()
     actual_tkpt = handler.trackpoints[1746]
-    assert(len(actual_tkpt.values) == expected_attr_count)
-    for key in expected_tkpt.keys():
-        expected, actual = expected_tkpt[key], actual_tkpt.values[key]
+    assert(len(actual_tkpt.values) == expected_tcm_attr_count)
+    for key in expected_tcm_tkpt.keys():
+        expected, actual = expected_tcm_tkpt[key], actual_tkpt.values[key]
         assert(expected == actual)
 
     # check the last trackpoint
-    expected_tkpt = expected_last_trackpoint()
+    expected_tcm_tkpt = expected_tcm_last_trackpoint()
     actual_tkpt = handler.trackpoints[-1]
-    assert(len(actual_tkpt.values) == expected_attr_count)
-    for key in expected_tkpt.keys():
-        expected, actual = expected_tkpt[key], actual_tkpt.values[key]
+    assert(len(actual_tkpt.values) == expected_tcm_attr_count)
+    for key in expected_tcm_tkpt.keys():
+        expected, actual = expected_tcm_tkpt[key], actual_tkpt.values[key]
         assert(expected == actual)
 
     # check seconds_to_midnight
     secs = int(handler.first_time_secs_to_midnight)
     assert(secs > 0)
     assert(secs < 86400)
+
+def test_dc_trails_20200217_tcx_file():
+    filename = 'data/activity_4564516081.tcx'
+    handler = ggps.TcxHandler()
+    handler.parse(filename)
+    tkpts = handler.trackpoints
+
+    # check the number of trackpoints
+    actual = len(tkpts)
+    expected = 2209
+    assert(actual == expected)
+
