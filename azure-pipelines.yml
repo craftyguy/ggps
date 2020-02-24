@@ -15,21 +15,24 @@ steps:
   displayName: 'display python3 version (3.5.2)'
   # Python 3.5.2
 
+- script: pip --version
+  displayName: 'display pip version'
+
 - script: pip3 --version
   displayName: 'display pip3 version'
   # pip 8.1.1 from /usr/lib/python3/dist-packages (python 3.5)
 
-- script: pip3 install --upgrade pip3
-  displayName: 'pip3 install --upgrade pip3'
+- script: pip install --upgrade pip
+  displayName: 'pip install --upgrade pip'
 
-- script: pip3 --version
-  displayName: 'display pip3 version'
+- script: pip --version
+  displayName: 'display pip version'
 
-- script: pip3 install -r requirements.txt
-  displayName: 'pip3 install -r requirements.txt'
+- script: pip install -r requirements.txt
+  displayName: 'pip install -r requirements.txt'
 
-- script: pip3 list
-  displayName: 'pip3 list'
+- script: pip list
+  displayName: 'pip list'
 
 - script: ls -alR
   displayName: 'ls -alR'
