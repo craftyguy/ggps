@@ -11,17 +11,20 @@ steps:
 # - script: sudo apt-get install python3-venv
 #   displayName: 'install python3-venv'
 
-- script: python --version ; which python
-  displayName: 'display python version'
-
 - script: python3 --version ; which python3
   displayName: 'display python3 version'
 
-- script: pip --version
-  displayName: 'display pip version'
-
 - script: pip3 --version
   displayName: 'display pip3 version'
+
+- script: pip3 install -r requirements.txt
+  displayName: 'pip3 install -r requirements.txt'
+
+- script: pip3 list
+  displayName: 'pip3 list'
+
+- script: ls -alR
+  displayName: 'ls -alR'
 
 # - script: |
 #     python -m pip install --upgrade pip
