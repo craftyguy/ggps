@@ -8,25 +8,30 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-- script: sudo apt-get install python3-venv
-  displayName: 'install python3-venv'
+# - script: sudo apt-get install python3-venv
+#   displayName: 'install python3-venv'
 
-- script: python3 --version
-  displayName: 'display python3 version (3.5.2)'
-  # Python 3.5.2
+- script: python --version ; which python
+  displayName: 'display python version'
+
+- script: python3 --version ; which python3
+  displayName: 'display python3 version'
 
 - script: pip --version
   displayName: 'display pip version'
 
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
+- script: pip3 --version
+  displayName: 'display pip3 version'
 
-- script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
+# - script: |
+#     python -m pip install --upgrade pip
+#     pip install -r requirements.txt
+#   displayName: 'Install dependencies'
+
+# - script: |
+#     pip install pytest pytest-azurepipelines
+#     pytest
+#   displayName: 'pytest'
 
 # - script: pip3 --version
 #   displayName: 'display pip3 version'
@@ -56,5 +61,5 @@ steps:
 # - script: pytest -v --cov=ggps/ --cov-report html tests/
 #   displayName: 'pytest with coverage report'
 
-- script: date -u > build_date.txt
-  displayName: 'create build date file'
+# - script: date -u > build_date.txt
+#   displayName: 'create build date file'
