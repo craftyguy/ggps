@@ -11,7 +11,6 @@ steps:
 - script: |
     sudo apt-get upgrade python3
     sudo apt-get install python3-venv
-  #sudo apt install python3-pip
   displayName: 'update and install python programs'
 
 - script: |
@@ -20,8 +19,9 @@ steps:
     python --version
     pip --version
     pip install -r requirements.txt
+    pip install pytest-azurepipelines
     pip list
-  displayName: 'create venv and install requirements'
+  displayName: 'create virtual environment and install requirements'
 
 - script: |
     source ggps_environment/bin/activate
@@ -32,7 +32,7 @@ steps:
     source ggps_environment/bin/activate
     pip list
     python -m pytest -v tests/ --cov=ggps/ --cov-report html tests/
-  displayName: 'pytest with coverage report'
+  displayName: 'execute unit tests'
 
 - script: |
     source ggps_environment/bin/activate
@@ -43,3 +43,16 @@ steps:
     source ggps_environment/bin/activate
     flake8 -v ggps --ignore F401
   displayName: 'flake8 code analysis'
+
+- script: |
+    source ggps_environment/bin/activate
+    python setup.py sdist
+  displayName: 'create source distribution for PyPI'
+
+# - script: |
+#     source ggps_environment/bin/activate
+#     python setup.py sdist upload
+#   displayName: 'upload source distribution to PyPI'
+
+- script: ls -alR
+  displayName: 'list files at EOJ'
