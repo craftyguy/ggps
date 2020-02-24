@@ -19,11 +19,17 @@ steps:
   displayName: 'display pip3 version'
   # pip 8.1.1 from /usr/lib/python3/dist-packages (python 3.5)
 
-- script: pip install -r requirements.txt
-  displayName: 'pip install -r requirements.txt'
+- script: pip3 install --upgrade pip3
+  displayName: 'pip3 install --upgrade pip3'
 
-- script: pip list
-  displayName: 'pip list'
+- script: pip3 --version
+  displayName: 'display pip3 version'
+
+- script: pip3 install -r requirements.txt
+  displayName: 'pip3 install -r requirements.txt'
+
+- script: pip3 list
+  displayName: 'pip3 list'
 
 - script: ls -alR
   displayName: 'ls -alR'
