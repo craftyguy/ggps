@@ -1,8 +1,16 @@
 # DevOps Build Pipeline
 # Create and test a Python package on multiple Python versions.
 # Chris Joakim, Microsoft, 2020/02/24
-#
 # See https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+# git remote -v
+# git remote add devops chjoakim@vs-ssh.visualstudio.com:v3/chjoakim/ggps/ggps
+# git remote -v
+# devops	chjoakim@vs-ssh.visualstudio.com:v3/chjoakim/ggps/ggps (fetch)
+# devops	chjoakim@vs-ssh.visualstudio.com:v3/chjoakim/ggps/ggps (push)
+# origin	git@github.com:cjoakim/ggps.git (fetch)
+# origin	git@github.com:cjoakim/ggps.git (push)
+# git push devops master
 
 trigger:
   - master
