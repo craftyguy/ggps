@@ -8,8 +8,8 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-# - script: sudo apt-get install python3-venv
-#   displayName: 'install python3-venv'
+- script: sudo apt-get install python3-venv
+  displayName: 'install python3-venv'
 
 - script: python3 --version ; which python3
   displayName: 'display python3 version'
