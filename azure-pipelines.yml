@@ -9,10 +9,9 @@ pool:
 
 steps:
 - script: |
-    sudo apt-get update
     sudo apt-get upgrade python3
     sudo apt-get install python3-venv
-    sudo apt install python3-pip
+  #sudo apt install python3-pip
   displayName: 'update and install python programs'
 
 - script: |
