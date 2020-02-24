@@ -30,58 +30,17 @@ steps:
 
 - script: |
     source ggps_environment/bin/activate
-    rstcheck README.rst
-  displayName: 'rstcheck README.rst'
-
-- script: |
-    source ggps_environment/bin/activate
-    flake8 ggps --ignore F401
-  displayName: 'flake8 code analysis'
-
-- script: |
-    source ggps_environment/bin/activate
     pip list
     python -m pytest tests/
   #pytest -v --cov=ggps/ --cov-report html tests/
   displayName: 'pytest with coverage report'
 
-# - script: |
-#     python -m pip install --upgrade pip
-#     pip install -r requirements.txt
-#   displayName: 'Install dependencies'
+- script: |
+    source ggps_environment/bin/activate
+    rstcheck README.rst
+displayName: 'rstcheck README.rst'
 
-# - script: |
-#     pip install pytest pytest-azurepipelines
-#     pytest
-#   displayName: 'pytest'
-
-# - script: pip3 --version
-#   displayName: 'display pip3 version'
-#   # pip 8.1.1 from /usr/lib/python3/dist-packages (python 3.5)
-
-# - script: pip install --upgrade pip
-#   displayName: 'pip install --upgrade pip'
-
-# - script: pip --version
-#   displayName: 'display pip version'
-
-# - script: pip install -r requirements.txt
-#   displayName: 'pip install -r requirements.txt'
-
-# - script: pip list
-#   displayName: 'pip list'
-
-# - script: ls -alR
-#   displayName: 'ls -alR'
-
-# - script: source bin/activate
-#   displayName: 'source bin/activate'
-
-# - script: rstcheck README.rst 
-#   displayName: 'rstcheck README.rst'
-
-# - script: pytest -v --cov=ggps/ --cov-report html tests/
-#   displayName: 'pytest with coverage report'
-
-# - script: date -u > build_date.txt
-#   displayName: 'create build date file'
+- script: |
+    source ggps_environment/bin/activate
+    flake8 ggps --ignore F401
+  displayName: 'flake8 code analysis'
