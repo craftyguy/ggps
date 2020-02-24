@@ -1,4 +1,4 @@
-# DevOps Build & Release Pipeline
+# Azure DevOps Build Pipeline
 # Chris Joakim, Microsoft, 2020/02/24
 
 trigger:
@@ -31,8 +31,7 @@ steps:
 - script: |
     source ggps_environment/bin/activate
     pip list
-    python -m pytest tests/
-  #pytest -v --cov=ggps/ --cov-report html tests/
+    python -m pytest -v tests/ --cov=ggps/ --cov-report html tests/
   displayName: 'pytest with coverage report'
 
 - script: |
@@ -42,5 +41,5 @@ steps:
 
 - script: |
     source ggps_environment/bin/activate
-    flake8 ggps --ignore F401
+    flake8 -v ggps --ignore F401
   displayName: 'flake8 code analysis'
