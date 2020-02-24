@@ -8,25 +8,25 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-- script: sudo apt-get install python3-venv
-  displayName: 'install python3-venv'
+- script: |
+    sudo apt-get update
+    sudo apt-get upgrade python3
+    sudo apt-get install python3-venv
+    sudo apt install python3-pip
+  displayName: 'update and install python programs'
 
-- script: python3 --version ; which python3
-  displayName: 'display python3 version'
+- script: |
+    python3 -m venv ggps_environment
+    source ggps_environment/bin/activate
+    python --version
+    pip --version
+    pip install -r requirements.txt
+    pip list
+  displayName: 'create venv and install requirements'
 
-- script: pip --version
-  displayName: 'display pip version'
-
-- script: pip install -r requirements.txt
-  displayName: 'pip install -r requirements.txt'
-
-- script: pip list
-  displayName: 'pip list'
-
-- script: ls -alR
-  displayName: 'ls -alR'
-
-- script: python3 ggps-examples.py
+- script: |
+    source ggps_environment/bin/activate
+    python3 ggps-examples.py
   displayName: 'python3 ggps-examples.py'
 
 # - script: |
