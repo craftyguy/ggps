@@ -1,0 +1,15 @@
+# DevOps Build & Release Pipeline
+# Chris Joakim, Microsoft, 2020/02/24
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- script: sudo apt-get install python3-venv
+  displayName: 'install python3-venv'
+
+- script: date -u > build_date.txt
+  displayName: 'create build date file'
