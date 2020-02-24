@@ -19,14 +19,14 @@ steps:
   displayName: 'display pip version'
 
 - script: |
-  python -m pip install --upgrade pip
-  pip install -r requirements.txt
-  displayName: 'Install dependencies'
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+    displayName: 'Install dependencies'
 
 - script: |
-  pip install pytest pytest-azurepipelines
-  pytest
-  displayName: 'pytest'
+    pip install pytest pytest-azurepipelines
+    pytest
+    displayName: 'pytest'
 
 # - script: pip3 --version
 #   displayName: 'display pip3 version'
