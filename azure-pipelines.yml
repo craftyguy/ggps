@@ -38,7 +38,7 @@ steps:
 - script: |
     source ggps_environment/bin/activate
     rstcheck README.rst
-displayName: 'rstcheck README.rst'
+  displayName: 'rstcheck README.rst'
 
 - script: |
     source ggps_environment/bin/activate
