@@ -28,8 +28,20 @@ steps:
     python3 ggps-examples.py
   displayName: 'python3 ggps-examples.py'
 
-- script: pytest -v --cov=ggps/ --cov-report html tests/
+- script: |
+    source ggps_environment/bin/activate
+    pytest -v --cov=ggps/ --cov-report html tests/
   displayName: 'pytest with coverage report'
+
+- script: |
+    source ggps_environment/bin/activate
+    rstcheck README.rst
+  displayName: 'rstcheck README.rst'
+
+- script: |
+    source ggps_environment/bin/activate
+    flake8 ggps --ignore F401
+  displayName: 'flake8 code analysis'
 
 # - script: |
 #     python -m pip install --upgrade pip
