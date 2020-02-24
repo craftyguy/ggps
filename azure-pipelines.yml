@@ -25,11 +25,14 @@ steps:
 - script: pip list
   displayName: 'pip list'
 
-- script: source bin/activate
-  displayName: 'source bin/activate'
+- script: ls -alR
+  displayName: 'ls -alR'
 
-- script: rstcheck README.rst 
-  displayName: 'rstcheck README.rst'
+# - script: source bin/activate
+#   displayName: 'source bin/activate'
+
+# - script: rstcheck README.rst 
+#   displayName: 'rstcheck README.rst'
 
 - script: pytest -v --cov=ggps/ --cov-report html tests/
   displayName: 'pytest with coverage report'
