@@ -28,6 +28,9 @@ steps:
     python3 ggps-examples.py
   displayName: 'python3 ggps-examples.py'
 
+- script: pytest -v --cov=ggps/ --cov-report html tests/
+  displayName: 'pytest with coverage report'
+
 # - script: |
 #     python -m pip install --upgrade pip
 #     pip install -r requirements.txt
