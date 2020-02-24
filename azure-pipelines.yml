@@ -25,6 +25,9 @@ steps:
 - script: pip list
   displayName: 'pip list'
 
+- script: source bin/activate
+  displayName: 'source bin/activate'
+
 - script: rstcheck README.rst 
   displayName: 'rstcheck README.rst'
 
