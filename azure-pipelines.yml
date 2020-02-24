@@ -12,10 +12,18 @@ steps:
   displayName: 'install python3-venv'
 
 - script: python3 --version
-  displayName: 'display python3 version'
+  displayName: 'display python3 version (3.5.2)'
+  # Python 3.5.2
 
 - script: pip3 --version
   displayName: 'display pip3 version'
+  # pip 8.1.1 from /usr/lib/python3/dist-packages (python 3.5)
+
+- script: pip install -r requirements.txt
+  displayName: 'pip install -r requirements.txt'
+
+- script: pip list
+  displayName: 'pip list'
 
 - script: date -u > build_date.txt
   displayName: 'create build date file'
