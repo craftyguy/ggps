@@ -10,6 +10,8 @@ def expected_first_trackpoint():
         "heartratebpm": "85",
         "latitudedegrees": "44.97431952506304",
         "longitudedegrees": "-93.26310088858008",
+        "altitudemeters": "259.20001220703125",
+        "altitudefeet": "850.3937408367167",
         "seq": "1",
         "time": "2014-10-05T13:07:53.000Z",
         "type": "Trackpoint"
@@ -21,6 +23,8 @@ def expected_middle_trackpoint():
         "heartratebpm": "140",
         "latitudedegrees": "44.959017438814044",
         "longitudedegrees": "-93.21290854364634",
+        "altitudemeters": "245.60000610351562",
+        "altitudefeet": "805.7742982398804",
         "seq": "1747",
         "time": "2014-10-05T16:21:12.000Z",
         "type": "Trackpoint"
@@ -32,6 +36,8 @@ def expected_last_trackpoint():
         "heartratebpm": "161",
         "latitudedegrees": "44.95180849917233",
         "longitudedegrees": "-93.10493202880025",
+        "altitudemeters": "263.6000061035156",
+        "altitudefeet": "864.8294163501167",
         "seq": "2256",
         "time": "2014-10-05T17:22:17.000Z",
         "type": "Trackpoint"
@@ -43,7 +49,7 @@ def test_twin_cities_marathon_gpx_file():
     handler.parse(filename)
 
     tkpts = handler.trackpoints
-    expected_attr_count = 7
+    expected_attr_count = 9
 
     # check the number of trackpoints
     actual = len(tkpts)
