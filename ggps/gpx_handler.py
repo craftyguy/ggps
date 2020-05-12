@@ -37,7 +37,7 @@ class GpxHandler(BaseHandler):
             if len(path) > self.tkpt_path_len:
                 retain = True
                 if tag_name == 'ele':
-                    retain = False
+                    tag_name = 'altitudemeters'
                 elif tag_name == 'extensions':
                     retain = False
                 elif tag_name == 'gpxtpx:TrackPointExtension':
@@ -63,7 +63,7 @@ class GpxHandler(BaseHandler):
         for idx, t in enumerate(self.trackpoints):
             if idx == 0:
                 self.set_first_trackpoint(t)
-
             t.set('seq', "{0}".format(idx + 1))
+            self.meters_to_feet(t, 'altitudemeters', 'altitudefeet')
             self.calculate_elapsed_time(t)
             self.cadence_x2(t)
